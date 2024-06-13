@@ -1,0 +1,73 @@
+body  {
+    margin: 0px;
+    padding-bottom: 60px;
+    z-index: 2;
+
+  }
+
+header {
+    background-color: #000000; 
+    color: rgb(255, 255, 255); /* White text color for header */
+    padding: 20px;
+    z-index: 3;
+  }
+
+header a {
+    color: white; /* Set anchor text color to white */
+    text-decoration: none; /* Remove underline from anchor text */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+nav {
+    vertical-align: middle;
+
+}
+
+nav ul {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox */
+}
+
+nav ul li {
+    margin-right: 20px; /* Add margin between list items */
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Remove margin from the last list item */
+}
+
+nav ul li a {
+    color: white; /* Set text color */
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px 15px; /* Add padding to the links */
+}
+
+
+nav ul li a:hover {
+    background-color: #555; /* Change background color on hover */
+}
+
+
+
+.logout-button {
+    margin-left: auto; /* This pushes the logout button to the far right */
+}
+
+/* Style the button if needed */
+.logout-button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000000;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+/* Style button hover effect */
+.logout-button button:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+

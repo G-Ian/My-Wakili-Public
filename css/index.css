@@ -1,0 +1,69 @@
+.mywakili {
+    text-align: center;
+  }
+
+.medium-text {
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+  }
+
+.large-text {
+    font-size: 150px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }  
+
+.instruction-text {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 0 0 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.instruction-text a {
+    background-color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 40px;
+    font-size: 25px; /* Adjust font size */
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    margin: 0 10px; /* Equal spacing between buttons */
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+}
+
+.instruction-text a:hover {
+    background-color: #333; /* Darken button color on hover */
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0 0 0; /* Add margin for spacing between buttons and edges */
+  }
+  
+.button-container a {
+    background-color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 40px;
+    font-size: 25px; /* Adjust font size */
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    margin: 0 10px; /* Equal spacing between buttons */
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+  }
+  
+.button-container a:hover {
+    background-color: #333; /* Darken button color on hover */
+  }

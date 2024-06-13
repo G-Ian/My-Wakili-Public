@@ -1,0 +1,101 @@
+h1 {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+form.body-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+form.body-form label {
+    font-weight: bold;
+}
+
+form.body-form input[type="text"],
+form.body-form input[type="number"],
+form.body-form textarea,
+form.body-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form.body-form input[type="file"] {
+    margin-bottom: 10px;
+}
+
+form.body-form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form.body-form button:hover {
+    background-color: #555;
+}
+
+
+
+/* Override checkbox styles to ensure visibility */
+.specialization-grid input[type="checkbox"] {
+    appearance: checkbox; /* Ensure default checkbox appearance */
+    -webkit-appearance: checkbox; /* For Safari */
+    -moz-appearance: checkbox; /* For Firefox */
+    -ms-appearance: checkbox; /* For IE */
+}
+
+/* Adjust label styles for checkboxes */
+.specialization-grid label {
+    display: inline-block; /* Ensure labels are inline */
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+
+/* Additional styling for selected checkboxes */
+.specialization-grid input[type="checkbox"]:checked + label {
+    font-weight: bold; /* Change font weight for selected checkboxes */
+}
+
+/* Ensure labels are clickable */
+.specialization-grid label {
+    cursor: pointer;
+}
+
+
+/* Style for the specialization fieldset */
+#specializations fieldset {
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Add border-radius */
+    padding: 10px; /* Add padding */
+    margin-top: 10px; /* Add margin-top */
+}
+
+/* Style for the legend of the specialization fieldset */
+#specializations fieldset legend {
+    font-weight: bold; /* Make legend text bold */
+}
+
+/* Override label styles for checkboxes within specialization grid */
+#specializations .specialization-grid label {
+    margin-bottom: 5px;
+    font-weight: lighter; /* Set font weight to lighter */
+}
+
+.time-container {
+    display: flex;
+    gap: 10px;
+}
+.time-container label {
+    display: inline-block;
+    width: 100px;
+}

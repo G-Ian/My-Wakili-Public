@@ -1,0 +1,96 @@
+/* combined_styles.css */
+
+/* General Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container */
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 30%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+}
+
+/* Profile Picture */
+.profile-picture {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Fullname Overlay */
+.fullname-overlay {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Username */
+.username2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Additional Info */
+.additional-info {
+    margin-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 10px;
+}
+
+.item-label {
+    font-weight: bold;
+}
+
+.item-data, .item-data2 {
+    font-style: italic;
+}
+
+/* Content */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.bio-data, .social-media {
+    margin-bottom: 20px;
+}
+
+.bio-text, .social-link {
+    margin-top: 10px;
+}
+
+.book-appointment-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.book-appointment-button:hover {
+    background-color: #555;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+}
+
+.blog-posts {
+    margin-bottom: 20px;
+}

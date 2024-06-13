@@ -1,0 +1,109 @@
+.login-signup-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust spacing from the content */
+}
+
+.login-signup-form {
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+
+.login-signup-form h2 {
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-signup-form button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.login-signup-form button:hover {
+    background-color: #333;
+}
+
+
+
+.login-signup-form .instruction-text {
+    font-size: 14px;
+    color: #666;
+}
+  
+.login-signup-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login-signup-form select option {
+    font-size: 16px;
+}
+
+/* Style for error messages */
+.form-error {
+    text-align: center;
+    color: #ff0000; 
+    font-size: 20px; 
+}
+
+/* Style for success messages */
+.form-success {
+    text-align: center;
+    color: #008000; 
+    font-size: 20px; 
+}
+
+.instruction-text {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 0 0 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.instruction-text a {
+    background-color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 10px;
+    font-size: 15px; /* Adjust font size */
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    margin: 0 10px; /* Equal spacing between buttons */
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+}
+
+.instruction-text a:hover {
+    background-color: #333; /* Darken button color on hover */
+}
+
+
+
+

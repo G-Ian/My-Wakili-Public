@@ -1,0 +1,15 @@
+body {
+    align-self: center;
+}
+
+table {
+    table-layout: fixed;
+    row-gap: 10px;
+    column-gap: 50px;
+    border: 2px;
+}
+ 
+h1 {
+    font-size: x-large;
+    font-weight: bold;
+}

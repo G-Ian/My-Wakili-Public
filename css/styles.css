@@ -1,0 +1,134 @@
+body  {
+    margin: 0px;
+
+  }
+
+header {
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0); /* White text color for header */
+    padding: 20px;
+  }
+
+
+  
+.content {
+    text-align: center;
+  }
+
+.mywakili {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.small-text {
+    font-size: 24px;
+    margin-bottom: 50px; 
+    font-family: Arial, sans-serif;
+  }
+  
+.medium-text {
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+  }
+
+.large-text {
+    font-size: 150px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }  
+
+.instruction-text {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0 0 0; /* Add margin for spacing between buttons and edges */
+  }
+  
+.button-container a {
+    background-color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 40px;
+    font-size: 25px; /* Adjust font size */
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    margin: 0 10px; /* Equal spacing between buttons */
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+  }
+  
+.button-container a:hover {
+    background-color: #333; /* Darken button color on hover */
+  }
+
+.instruction-text {
+    padding: 0 0 0 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+.login-signup-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust spacing from the content */
+}
+
+.login-signup-form {
+    max-width: 300px;
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+.login-signup-form h2 {
+    margin-bottom: 20px;
+}
+
+.login-signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-signup-form button {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-signup-form button:hover {
+    background-color: #333;
+}
+
+
+
+.login-signup-form .instruction-text {
+    font-size: 14px;
+    color: #666;
+}
+  
+footer {
+    background-color: #000000; /* Black background color for footer */
+    color: white; /* White text color for footer */
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
