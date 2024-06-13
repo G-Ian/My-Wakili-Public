@@ -20,12 +20,12 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
     <link rel="stylesheet" type="text/css" href="css/client.css">
 </head>
 <body>
-    <?php include 'includes/pract_header.inc.php'; ?>
+    <?php include 'includes/client_header.inc.php'; ?>
 
     <header>
         <br><br>
         <h1>Legal Practitioners</h1>
-        <!-- Add search bar here -->
+        <!--search Bar -->
         <form method="GET" action="">
             <input type="text" name="search" placeholder="Search by keyword..." value="<?= $searchQuery ?>">
             <button type="submit">Search</button>

@@ -25,7 +25,7 @@
 .profile-picture {
     width: 100%;
     height: auto;
-    border-radius: 50%;
+    border-radius: 10px;
 }
 
 /* Fullname Overlay */
@@ -41,7 +41,20 @@
 }
 
 /* Additional Info */
+.additional-info1 {
+    padding: 20px;
+    background-color: #ffffff;
+}
+
 .additional-info {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.appointment-info {
+    padding: 20px;
+    background-color: #ffffff;
     margin-top: 20px;
 }
 
@@ -61,6 +74,8 @@
 .content {
     flex-grow: 1;
     padding: 20px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
 }
 
 .bio-data, .social-media {
@@ -93,4 +108,10 @@
 
 .blog-posts {
     margin-bottom: 20px;
+    background-color: #f4f4f4;
+}
+
+.social-media {
+    align-items: center;
+    text-align: center;
 }
