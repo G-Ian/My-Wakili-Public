@@ -77,8 +77,8 @@ function build_calendar($month, $year) {
         // Check if the current day is today
         $today = $date == date('Y-m-d') ? 'today' : '';
         
-        // Create the cell for the current day
-        $calendar .= "<td class='$today'><h3>$currentDayRel</h3></td>";
+        // Create the cell for the current day with a clickable link
+        $calendar .= "<td class='$today'><h3><a href='book.php?date=$date'>$currentDayRel</a></h3></td>";
         
         // Increment the day counter and day of the week
         $currentDay++;
