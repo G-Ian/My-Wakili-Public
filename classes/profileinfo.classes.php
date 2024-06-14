@@ -78,7 +78,7 @@ class ProfileInfo extends Dbh {
         if (!$stmt->execute(array($full_name, $profession, $firm, $specializationsJson, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about, $user_id))) {
             // Handle the case where the SQL statement execution failed
             $stmt = null;
-            header("location: /MYWAKILI(OOP)/profilesettings.php?error=updateprofilefailed");
+            header("location: /MY WAKILI/profilesettings.php?error=updateprofilefailed");
             exit();
         }
 
@@ -98,7 +98,7 @@ class ProfileInfo extends Dbh {
         if (!$stmt->execute(array($user_id, $username, $user_email, $full_name, $profession, $firm, $specializationsJson, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about))) {
             // Handle the case where the SQL statement execution failed
             $stmt = null;
-            header("location:/MYWAKILI(OOP)/profilesettings.php?error=setprofileinfofailed");
+            header("location:/MY WAKILI/profilesettings.php?error=setprofileinfofailed");
             exit();
         }
 

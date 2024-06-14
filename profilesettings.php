@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 
 session_start();
 if (!isset($_SESSION["user_id"])) {
-    header("Location: /login.php");
+    header("Location: MY WAKILI/login.php");
     exit();
 }
 
@@ -62,33 +62,31 @@ if ($profileData === null) {
         <textarea id="profile_about" name="profile_about" placeholder="Tell potential clients about yourself" required><?php echo $profileAbout ?? ''; ?></textarea><br>
         
         <label for="profession">Profession:</label><br>
-        <select id="profession" name="profession" required onchange="showSpecializations()">
-            <option value="">Select Profession</option>
-            <option value="Advocate">Advocate</option>
-            <option value="Prosecutor">Prosecutor</option>
-            <option value="Paralegal">Paralegal</option>
-            <option value="Court Process Server">Court Process Server</option>
-            <option value="Court Clerk">Court Clerk</option>
-            <option value="Investigator">Investigator</option>
-            <option value="Mediator">Mediator</option>
-            <option value="Legal Assistant">Legal Assistant</option>
-            <option value="Clerk">Clerk</option>
-            <option value="Solicitor">Solicitor</option>
-            <option value="Commissioner of Oaths">Commissioner of Oaths</option>
-            <option value="Judge">Judge</option>
-            <option value="other">Other</option> <!-- Add an option for "Other" -->
-            <!-- Add other professions as needed -->
-        </select><br>
-        <input type="text" id="other_profession" name="other_profession" style="display: none;" placeholder="Enter your profession">
+            <select id="profession" name="profession" required onchange="showSpecializations()">
+                <option value="">Select Profession</option>
+                <?php
+                $professions = array(
+                    "Advocate", "Prosecutor", "Paralegal", "Court Process Server",
+                    "Court Clerk", "Investigator", "Mediator", "Legal Assistant",
+                    "Clerk", "Solicitor", "Commissioner of Oaths", "Judge", "Other"
+                );
+                foreach ($professions as $prof) {
+                    $selected = ($prof == $profession) ? 'selected' : '';
+                    echo '<option value="' . $prof . '" ' . $selected . '>' . $prof . '</option>';
+                }
+                ?>
+            </select><br>
+            <input type="text" id="other_profession" name="other_profession" style="display: <?php echo ($profession == 'Other') ? 'block' : 'none'; ?>;" placeholder="Enter your profession" value="<?php echo $profession == 'Other' ? htmlspecialchars($otherProfession) : ''; ?>">
 
+                    
       
-        <div id="specializations" class="specializations" style="display: none;">
+        <div id="specializations" class="specializations" style="display: <?php echo ($profession == 'Advocate') ? 'block' : 'none'; ?>;">
             <fieldset> <!-- Wrap specialization options in a fieldset for styling -->
                 <legend>Law Specializations:</legend> <!-- Add a legend for the fieldset -->
                     <label for="law_specializations">Which type(s) of law do you practise?</label><br>
                     <div class="specialization-grid">
                         <input type="checkbox" id="specialization1" name="law_specializations[]" value="Admiralty Law">
-                        <label for="specialization1">Admiriiiilty Law</label><br>
+                        <label for="specialization1">Admirilty Law</label><br>
                         <input type="checkbox" id="specialization2" name="law_specializations[]" value="Bankruptcy Law">
                         <label for="specialization2">Bankruptcy Law</label><br>
                         <input type="checkbox" id="specialization3" name="law_specializations[]" value="Business Law">
@@ -142,11 +140,11 @@ if ($profileData === null) {
     <script>
         function showSpecializations() {
             var profession = document.getElementById("profession").value;
-            var specializations = document.getElementById("specializations");
+            var specializationsDiv = document.getElementById("specializations");
             if (profession === "Advocate") {
-                specializations.style.display = "block";
+                specializationsDiv.style.display = "block";
             } else {
-                specializations.style.display = "none";
+                specializationsDiv.style.display = "none";
             }
         }
 

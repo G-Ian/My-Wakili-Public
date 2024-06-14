@@ -49,6 +49,11 @@ $profileInfo = new ProfileInfoView();
                     <a href="#" class="social-link" id="github-link" target="_blank">GitHub</a>
                     <a href="#" class="social-link" id="linkedin-link" target="_blank">LinkedIn</a>
                 </div>
+
+                <form action="profilesettings.php" method="post">
+                    <input type="hidden" name="user_id" value="<?= $userID ?>">
+                    <button class="book-appointment-button">Update Profile</button>
+                </form>
                 
             </div>
         </div>
@@ -79,6 +84,15 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-data">
                         <?php
                                 $profileInfo->fetchExperience($_SESSION["user_id"]);
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="detail-item">
+                        <p class="item-label">Specializations:</p>
+                        <p class="item-data">
+                        <?php
+                                $profileInfo->fetchSpecializations($_SESSION["user_id"]);
                             ?>
                         </p>
                     </div>
@@ -137,10 +151,7 @@ $profileInfo = new ProfileInfoView();
                 </div> 
 
                 <br>
-                <form action="profilesettings.php" method="post">
-                    <input type="hidden" name="user_id" value="<?= $userID ?>">
-                    <button class="book-appointment-button">Update Profile</button>
-                </form>
+
 
             </div>
 

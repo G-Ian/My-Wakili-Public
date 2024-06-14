@@ -1,3 +1,16 @@
+<?php
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+} else {
+    // Redirect to login page if not logged in
+    header("location: login.php?signup=success");
+    exit();
+}
+?>
+
 <header class="header-main">
     <nav>
         <a href="index.php" class="logo">
@@ -5,7 +18,7 @@
         </a>
         <ul>
             <li><a href="client.php">Home</a></li>
-            <li><a href="client.php?search=Lawyer">Lawyers</a>
+            <li><a href="client.php">Lawyers</a>
                 <ul>
                     <li><a href="client.php?search=Criminal%20Law">Criminal Law</a></li>
                     <li><a href="client.php?search=Civil%20Law">Civil Law</a></li>
@@ -29,10 +42,16 @@
             <li><a href="#">Contact Us</a></li>
         </ul>
     </nav>
+
     
-    <div class="logout">
-        <form action="includes/logout.inc.php" method="post">
-            <button class="logout-button">Logout</button>
-        </form>
-    </div>
+    
+        <!-- Begin: Added Username Display and Session Check -->
+        <div class="logout">
+            <a href="#" class="username">Welcome, <?php echo htmlspecialchars($username); ?>!</a> <!-- Display the username as a link -->
+            <form action="includes/logout.inc.php" method="post">
+                <button class="logout-button">Logout</button>
+            </form>
+        </div>
+        <!-- End: Added Username Display and Session Check -->
+    
 </header>

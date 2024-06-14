@@ -52,22 +52,22 @@ CREATE TABLE practitioner_specializations (
 
 
 CREATE TABLE bookings (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  user_id INT(11) NOT NULL,
-  practitioner_id INT(11) NOT NULL,
-  date TEXT NOT NULL,
-  time TEXT NOT NULL,
-  client_name TEXT NOT NULL,
-  client_email TEXT NOT NULL,
-  client_phone TEXT NOT NULL,
-  service_type TEXT NOT NULL,
-  comments TEXT NOT NULL,
-  PRIMARY KEY (id),
-  KEY user_id (user_id),
-  KEY practitioner_id (practitioner_id),
-  CONSTRAINT bookings_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (user_id),
-  CONSTRAINT bookings_ibfk_2 FOREIGN KEY (practitioner_id) REFERENCES practitioners (practitioner_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    practitioner_id INT,
+    date DATE,
+    time TIME,
+    client_name VARCHAR(100),
+    client_email VARCHAR(100),
+    client_phone VARCHAR(20),
+    service_type VARCHAR(100),
+    comments TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    appointment_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (practitioner_id) REFERENCES practitioners(practitioner_id)
+);
 
 
 

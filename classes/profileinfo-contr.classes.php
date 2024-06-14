@@ -142,7 +142,7 @@ class ProfileInfoContr extends ProfileInfo {
             
             if(!$stmt->execute(array($full_name, $profession, $firm, $specializations, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about, $user_id))) {
                 // If the execution fails, redirect to an error page
-                header("location: /MYWAKILI(OOP)/profilesettings.php?error=updateprofilefailed");
+                header("location: /MY WAKILI/profilesettings.php?error=updateprofilefailed");
                 exit();
             }
             
@@ -150,12 +150,12 @@ class ProfileInfoContr extends ProfileInfo {
             $stmt = null;
             
             // Redirect to a success page or the profile settings page without an error
-            header("location: /MYWAKILI(OOP)/pract.dash.php?success=profileupdated");
+            header("location: /MY WAKILI/pract.dash.php?success=profileupdated");
             exit();
             
         } catch (PDOException $e) {
             // Handle any exceptions that occur during the database operations
-            header("location: /MYWAKILI(OOP)/profilesettings.php?error=dberror&message=" . $e->getMessage());
+            header("location: /MY WAKILI/profilesettings.php?error=dberror&message=" . $e->getMessage());
             exit();
         }
     }

@@ -6,8 +6,8 @@ include "classes/profileinfo-view.classes.php";
 
 $profileInfo = new ProfileInfoView();
 
-// Assuming $userID holds the user ID of the profile being viewed
-$userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
+// Retrieve practitioner_id from GET parameter (assuming it's passed in the URL)
+$practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -32,14 +32,14 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                 <div class="info-item">
                     <p class="item-data2">
                         <?php
-                            $profileInfo->fetchProfession($userID);
+                            $profileInfo->fetchProfession($practitioner_id);
                         ?>
                     </p>
                 </div>
 
                 <h1 class="username2" id="fullname">
                     <?php
-                        $profileInfo->fetchFullname($userID);
+                        $profileInfo->fetchFullname($practitioner_id);
                     ?>
                 </h1>
             </div>
@@ -51,6 +51,11 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                 <a href="#" class="social-link" id="github-link" target="_blank">GitHub</a>
                 <a href="#" class="social-link" id="linkedin-link" target="_blank">LinkedIn</a>
             </div>
+
+            <form action="book.php" method="get">
+                    <input type="hidden" name="practitioner_id" value="<?= $practitioner_id ?>">
+                    <button type="submit" class="book-appointment-button">Book Appointment</button>
+            </form>
         </div>
 
 
@@ -61,7 +66,7 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Profession:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchProfession($userID);
+                                $profileInfo->fetchProfession($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -70,7 +75,7 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Professional Bio:</p>
                         <p class="bio-text">
                             <?php
-                                $profileInfo->fetchBioText($userID);
+                                $profileInfo->fetchBioText($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -79,7 +84,16 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Year of Admission:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchExperience($userID);
+                                $profileInfo->fetchExperience($practitioner_id);
+                            ?>
+                        </p>
+                    </div>
+
+                    <div class="detail-item">
+                        <p class="item-label">Specializations:</p>
+                        <p class="item-data">
+                            <?php
+                                $profileInfo->fetchSpecializations($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -88,7 +102,7 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Firm:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchFirm($userID);
+                                $profileInfo->fetchFirm($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -99,7 +113,7 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Location:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchAddress($userID);
+                                $profileInfo->fetchAddress($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -107,7 +121,7 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Email:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchEmail($userID);
+                                $profileInfo->fetchEmail($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -115,7 +129,7 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Phone Number:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchPhoneNumber($userID);
+                                $profileInfo->fetchPhoneNumber($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -125,21 +139,18 @@ $userID = isset($_GET['user_id']) ? $_GET['user_id'] : '';
 
             <div class="appointment-info">
                 <div class="detail-item">
-                        <p class="item-label">Working Hours:</p>
-                        <p class="item-data">
-                            <?php
-                                $startHours = $profileInfo->fetchStartHours($userID);
-                                $endHours = $profileInfo->fetchEndHours($userID);
-                                echo "$startHours to $endHours";
-                            ?>
-                        </p>
-                    </div>
+                    <p class="item-label">Working Hours:</p>
+                    <p class="item-data">
+                        <?php
+                            $startHours = $profileInfo->fetchStartHours($practitioner_id);
+                            $endHours = $profileInfo->fetchEndHours($practitioner_id);
+                            echo "$startHours to $endHours";
+                        ?>
+                    </p>
+                </div>
 
                 <br>
-                <form action="bookappointment.php" method="post">
-                    <input type="hidden" name="user_id" value="<?= $userID ?>">
-                    <button class="book-appointment-button">Book Appointment</button>
-                </form>
+                
             </div>
 
             
