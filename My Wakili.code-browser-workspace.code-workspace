@@ -1,0 +1,85 @@
+{
+	"folders": [
+		{
+			"name": "My Wakili",
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#2f7c47",
+			"activityBar.background": "#2f7c47",
+			"activityBar.foreground": "#e7e7e7",
+			"activityBar.inactiveForeground": "#e7e7e799",
+			"activityBarBadge.background": "#422c74",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#2f7c47",
+			"statusBar.background": "#215732",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#2f7c47",
+			"statusBarItem.remoteBackground": "#215732",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#215732",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#21573299",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		},
+		"peacock.color": "#215732",
+		"vscode-edge-devtools.defaultUrl": "localhost"
+	},
+	"launch": {
+		"configurations": [
+			{
+				"type": "pwa-msedge",
+				"name": "Launch Microsoft Edge",
+				"request": "launch",
+				"runtimeArgs": [
+					"--remote-debugging-port=9222"
+				],
+				"url": "localhost",
+				"presentation": {
+					"hidden": true
+				}
+			},
+			{
+				"type": "pwa-msedge",
+				"name": "Launch Microsoft Edge in headless mode",
+				"request": "launch",
+				"runtimeArgs": [
+					"--headless",
+					"--remote-debugging-port=9222"
+				],
+				"url": "localhost",
+				"presentation": {
+					"hidden": true
+				}
+			},
+			{
+				"type": "vscode-edge-devtools.debug",
+				"name": "Open Edge DevTools",
+				"request": "attach",
+				"url": "localhost",
+				"presentation": {
+					"hidden": true
+				}
+			}
+		],
+		"compounds": [
+			{
+				"name": "Launch Edge Headless and attach DevTools",
+				"configurations": [
+					"Launch Microsoft Edge in headless mode",
+					"Open Edge DevTools"
+				]
+			},
+			{
+				"name": "Launch Edge and attach DevTools",
+				"configurations": [
+					"Launch Microsoft Edge",
+					"Open Edge DevTools"
+				]
+			}
+		]
+	}
+}
