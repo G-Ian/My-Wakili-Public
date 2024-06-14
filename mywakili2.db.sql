@@ -51,6 +51,26 @@ CREATE TABLE practitioner_specializations (
 );
 
 
+CREATE TABLE bookings (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  user_id INT(11) NOT NULL,
+  practitioner_id INT(11) NOT NULL,
+  date TEXT NOT NULL,
+  time TEXT NOT NULL,
+  client_name TEXT NOT NULL,
+  client_email TEXT NOT NULL,
+  client_phone TEXT NOT NULL,
+  service_type TEXT NOT NULL,
+  comments TEXT NOT NULL,
+  PRIMARY KEY (id),
+  KEY user_id (user_id),
+  KEY practitioner_id (practitioner_id),
+  CONSTRAINT bookings_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (user_id),
+  CONSTRAINT bookings_ibfk_2 FOREIGN KEY (practitioner_id) REFERENCES practitioners (practitioner_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
 
 DELIMITER //
 
