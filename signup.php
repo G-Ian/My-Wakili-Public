@@ -55,6 +55,13 @@ require_once 'includes/signup_view.inc.php';
                 <button type="submit" name="submit">Sign Up</button>
             </form>
 
+            <br><br>
+            <div class="instruction-text">
+                <p class="instruction-text">Already have an account?</p>
+                <br>
+                <a href="Login.php">Login</a>
+            </div>
+
             <?php
             check_signup_errors();
             ?>
