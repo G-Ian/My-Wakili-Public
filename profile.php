@@ -52,10 +52,11 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                 <a href="#" class="social-link" id="linkedin-link" target="_blank">LinkedIn</a>
             </div>
 
-            <form action="book.php" method="get">
-                    <input type="hidden" name="practitioner_id" value="<?= $practitioner_id ?>">
-                    <button type="submit" class="book-appointment-button">Book Appointment</button>
+            <form action="bookappointment.php" method="get">
+                <input type="hidden" name="practitioner_id" value="<?php echo htmlspecialchars($practitioner_id); ?>">
+                <button type="submit" class="book-appointment-button">Book Appointment</button>
             </form>
+
         </div>
 
 

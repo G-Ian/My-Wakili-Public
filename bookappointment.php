@@ -1,6 +1,6 @@
 <?php
 // Function to build the calendar for a given month and year
-function build_calendar($month, $year) {
+function build_calendar($month, $year, $practitioner_id) {
     // Array of days of the week
     $daysOfWeek = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
     
@@ -32,9 +32,9 @@ function build_calendar($month, $year) {
     $calendar = "<h2>$monthName $year</h2><br>";
     
     // Navigation buttons for previous month, current month, and next month
-    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."'>Prev Month</a> ";
-    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."'>Current Month</a>";
-    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."'>Next Month</a>";
+    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."&practitioner_id=$practitioner_id'>Prev Month</a> ";
+    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."&practitioner_id=$practitioner_id'>Current Month</a> ";
+    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."&practitioner_id=$practitioner_id'>Next Month</a>";
 
     // Add some space and start the table for the calendar
     $calendar .= "<br><br><table class='table table-bordered'><tr>";
@@ -78,7 +78,8 @@ function build_calendar($month, $year) {
         $today = $date == date('Y-m-d') ? 'today' : '';
         
         // Create the cell for the current day with a clickable link
-        $calendar .= "<td class='$today'><h3><a href='book.php?date=$date'>$currentDayRel</a></h3></td>";
+        $calendar .= "<td class='$today'><h3><a href='book.php?date=$date&practitioner_id=$practitioner_id'>$currentDayRel</a></h3></td>";
+
         
         // Increment the day counter and day of the week
         $currentDay++;
@@ -115,6 +116,12 @@ function build_calendar($month, $year) {
         <div class="row">
             <div class="col-md-12">
                 <?php
+                    // Retrieve practitioner_id from GET parameter
+                    if (!isset($_GET['practitioner_id'])) {
+                        die("No practitioner selected.");
+                    }
+                    $practitioner_id = intval($_GET['practitioner_id']);
+                    
                     // Get current month and year
                     $dateComponents = getdate();
                     
@@ -128,7 +135,7 @@ function build_calendar($month, $year) {
                     }
 
                     // Display the calendar for the given month and year
-                    echo build_calendar($month, $year);
+                    echo build_calendar($month, $year, $practitioner_id);
                 ?>
             </div>
         </div>
