@@ -1,18 +1,28 @@
 <?php
 
 class Dbh {
+    private $host = "localhost";
+    private $user = "root";
+    private $pwd = "";
+    private $dbName = "mywakili2";
+    private $port = 3307; // Ensure this matches your MySQL port
 
     protected function connect() {
         try {
-           $username = "root";
-           $password = "";
-           $dbh = new PDO('mysql:host=localhost:3307;dbname=mywakili2', $username, $password);
-           return $dbh;
-        } 
-        catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-            die();
+            $dsn = 'mysql:host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->dbName;
+            $pdo = new PDO($dsn, $this->user, $this->pwd);
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Enable exceptions
+            return $pdo;
+        } catch (PDOException $e) {
+            die('Database Connection Failed: ' . $e->getMessage());
         }
     }
-    
+
+    public function getPdo() {
+        return $this->connect(); // Return the PDO connection
+    }
 }
+
+?>
+

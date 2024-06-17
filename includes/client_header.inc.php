@@ -28,6 +28,7 @@ if (isset($_SESSION["username"])) {
                     <li><a href="client.php?search=Constitutional%20Law">Constitutional Law</a></li>
                 </ul>
             </li>
+            <li><a href="clientappointments.php">Appointments</a></li>
             <li><a href="#">Downloads</a></li>
             <li><a href="#">Services</a>
                 <ul>

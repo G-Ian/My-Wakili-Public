@@ -40,7 +40,7 @@ if (isset($_SESSION["username"])) {
                     </ul>
                 </li>
                 
-                <li><a href="#">Appointments</a></li>
+                <li><a href="practappointments.php">Appointments</a></li>
                 <li><a href="#">Client Requests</a></li>
                 <li><a href="#">Schedule</a></li>
             </ul>
