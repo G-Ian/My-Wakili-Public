@@ -65,11 +65,8 @@ $total_pages = ceil($total_appointments / $limit);
                         <td><?= htmlspecialchars($appointment['time']) ?></td>
                         <td><?= htmlspecialchars($appointment['updated_at']) ?></td>
                         <td>
-                            <form action="update-booking.php" method="GET" style="display: inline;">
-                                <input type="hidden" name="booking_id" value="<?= htmlspecialchars($appointment['booking_id']) ?>">
-                                <button type="submit">Update</button>
-                            </form>
-                            <form action="remove-booking.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this booking?');" style="display: inline;">
+
+                            <form action="classes/remove-booking.classes.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this booking?');" style="display: inline;">
                                 <input type="hidden" name="booking_id" value="<?= htmlspecialchars($appointment['booking_id']) ?>">
                                 <button type="submit" style="background-color: #dc3545;">Remove</button>
                             </form>

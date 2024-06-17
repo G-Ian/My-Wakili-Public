@@ -165,7 +165,7 @@ $date = isset($_GET['date']) ? htmlspecialchars($_GET['date']) : date('Y-m-d');
 
                 <!-- Display booking form if no success message -->
                 <h2>Book an Appointment for <?php echo htmlspecialchars($date); ?></h2>
-                <form method="POST" action="book-appoitment.php?practitioner_id=<?php echo htmlspecialchars($practitioner_id); ?>&date=<?php echo htmlspecialchars($date); ?>">
+                <form method="POST" action="book-appointment.php?practitioner_id=<?php echo htmlspecialchars($practitioner_id); ?>&date=<?php echo htmlspecialchars($date); ?>">
                     <input type="hidden" name="date" value="<?php echo htmlspecialchars($date); ?>">
                     <div class="form-group">
                         <label for="time">Time</label>

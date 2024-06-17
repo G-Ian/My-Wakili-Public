@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "classes/dbh.classes.php";
+require_once "dbh.classes.php";
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -30,7 +30,7 @@ try {
     $stmt->execute();
 
     // Redirect to appointments page after successful deletion
-    header("Location: client-appointments.php");
+    header("Location: ../client-appointments.php");
     exit();
 } catch (PDOException $e) {
     // Handle database errors gracefully (you might want to log these errors)

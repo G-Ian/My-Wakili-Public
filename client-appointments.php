@@ -50,7 +50,6 @@ echo 'Memory usage: ' . memory_get_usage() . ' bytes';
                     <th>Comments</th>
                     <th>Date of Appointment</th>
                     <th>Time of Appointment</th>
-                    <th>Last Updated</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -59,18 +58,17 @@ echo 'Memory usage: ' . memory_get_usage() . ' bytes';
                     <?php foreach ($appointments as $appointment): ?>
                         <tr>
                             <td><?= htmlspecialchars($appointment['booking_id']) ?></td>
-                            <td><a href="profile.php?user_id=<?= htmlspecialchars($appointment['practitioner_user_id']) ?>"><?= htmlspecialchars($appointment['practitioner_name']) ?></a></td>
+                            <td><a href="client-profile.php?user_id=<?= htmlspecialchars($appointment['practitioner_user_id']) ?>"><?= htmlspecialchars($appointment['practitioner_name']) ?></a></td>
                             <td><?= htmlspecialchars($appointment['service_type']) ?></td>
                             <td><?= htmlspecialchars($appointment['comments']) ?></td>
                             <td><?= htmlspecialchars($appointment['date']) ?></td>
                             <td><?= htmlspecialchars($appointment['time']) ?></td>
-                            <td><?= htmlspecialchars($appointment['updated_at']) ?></td>
                             <td>
-                                <form action="update-booking.php" method="GET" style="display: inline;">
+                                <form action="client-booking-update.php" method="GET" style="display: inline;">
                                     <input type="hidden" name="booking_id" value="<?= htmlspecialchars($appointment['booking_id']) ?>">
                                     <button type="submit">Update</button>
                                 </form>
-                                <form action="remove-booking.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this booking?');" style="display: inline;">
+                                <form action="classes/remove-booking.classes.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this booking?');" style="display: inline;">
                                     <input type="hidden" name="booking_id" value="<?= htmlspecialchars($appointment['booking_id']) ?>">
                                     <button type="submit" style="background-color: #dc3545;">Remove</button>
                                 </form>

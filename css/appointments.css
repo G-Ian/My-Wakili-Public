@@ -66,6 +66,8 @@ button[type="submit"] {
     background-color: #007bff;
     color: white;
     border: none;
+    width: 100%;
+    text-align: center;
 }
 
 button[type="submit"]:hover {
@@ -78,6 +80,8 @@ button[type="submit"]:focus {
 
 button[type="submit"][style*="background-color: #dc3545;"] {
     background-color: #dc3545;
+    width: 100%;
+    text-align: center;
 }
 
 button[type="submit"][style*="background-color: #dc3545;"]:hover {
@@ -96,20 +100,20 @@ button[type="submit"][style*="background-color: #dc3545;"]:hover {
     display: inline-block;
     padding: 8px 16px;
     text-decoration: none;
-    color: #007bff;
-    border: 1px solid #007bff;
+    color: #000000;
+    border: 1px solid #000000;
     margin-right: 5px;
 }
 
 .pagination a:hover {
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
 }
 
 .pagination .active {
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
-    border: 1px solid #007bff;
+    border: 1px solid #000000;
 }
 
 .pagination .disabled {

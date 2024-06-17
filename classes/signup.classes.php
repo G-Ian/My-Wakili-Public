@@ -72,13 +72,13 @@ class Signup extends Dbh {
 
     //     if($stmt->execute(array($username))) {
     //         $stmt = null;
-    //         header("location:../profile.php?error=stmtfailed");
+    //         header("location:../client-profile.php?error=stmtfailed");
     //         exit();
     //     }
 
     //     if($stmt->rowCount() == 0) {
     //         $stmt = null;
-    //         header("location:../profile.php?error=profilenotfound");
+    //         header("location:../client-profile.php?error=profilenotfound");
     //         exit();
     //     }
 

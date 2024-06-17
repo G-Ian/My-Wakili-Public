@@ -70,7 +70,7 @@ try {
     <title>Update Booking</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
-    <link rel="stylesheet" type="text/css" href="css/update-booking.css">
+    <link rel="stylesheet" type="text/css" href="css/update-appointments.css">
 </head>
 <body>
 
@@ -81,7 +81,7 @@ try {
 
         <h1>Update Booking</h1>
 
-        <form action="update-booking.php" method="POST">
+        <form action="client-booking-update.php" method="POST">
 
             <!-- Hidden input for booking_id -->
             <input type="hidden" name="booking_id" value="<?= htmlspecialchars($booking['booking_id']) ?>">

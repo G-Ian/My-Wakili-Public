@@ -83,7 +83,7 @@ class ProfileInfoContr extends ProfileInfo {
     
         if (!empty($emptyFields)) {
             $errorString = implode(',', $emptyFields);
-            header("location: ../profilesettings.php?error=emptyprofileinput&fields=$errorString");
+            header("location: ../pract-profilesettings.php?error=emptyprofileinput&fields=$errorString");
             exit();
         }
     
@@ -142,7 +142,7 @@ class ProfileInfoContr extends ProfileInfo {
             
             if(!$stmt->execute(array($full_name, $profession, $firm, $specializations, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about, $user_id))) {
                 // If the execution fails, redirect to an error page
-                header("location: /MY WAKILI/profilesettings.php?error=updateprofilefailed");
+                header("location: /MY WAKILI/pract-profilesettings.php?error=updateprofilefailed");
                 exit();
             }
             
@@ -155,7 +155,7 @@ class ProfileInfoContr extends ProfileInfo {
             
         } catch (PDOException $e) {
             // Handle any exceptions that occur during the database operations
-            header("location: /MY WAKILI/profilesettings.php?error=dberror&message=" . $e->getMessage());
+            header("location: /MY WAKILI/pract-profilesettings.php?error=dberror&message=" . $e->getMessage());
             exit();
         }
     }
@@ -181,7 +181,7 @@ class ProfileInfoContr extends ProfileInfo {
     //     if (!$stmt->execute([$user_id])) {
     //         // Handle deletion failure
     //         $stmt = null;
-    //         header("location:../profilesettings.php?error=deletespecializationsfailed");
+    //         header("location:../pract-profilesettings.php?error=deletespecializationsfailed");
     //         exit();
     //     }
 
@@ -195,7 +195,7 @@ class ProfileInfoContr extends ProfileInfo {
     //     if (!$stmt->execute([$user_id, $specialization])) {
     //         // Handle insertion failure
     //         $stmt = null;
-    //         header("location:../profilesettings.php?error=insertspecializationfailed");
+    //         header("location:../pract-profilesettings.php?error=insertspecializationfailed");
     //         exit();
     //     }
 

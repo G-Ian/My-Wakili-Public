@@ -133,7 +133,7 @@ class SignupContr extends Signup {
 
         if (!$stmt->execute([$user_id, $username, $user_email, 'Enter your full name', 'Tell clients your profession', 'Which firm or company are you affiliated with?', '1900', 'Enter a phone number', 'When are you available to meet with clients?', 'Where can clients find you', 'Tell potential clients about yourself'])) {
             $stmt = null;
-            header("location:../profile.php?error=setprofileinfofailed");
+            header("location:../pract-profilesettings.php?error=setprofileinfofailed");
             exit();
         }
 
