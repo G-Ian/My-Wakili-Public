@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Check if booking_id is provided via POST
 if (!isset($_POST['booking_id'])) {
-    header("Location: clientappointments.php");
+    header("Location: client-appointments.php");
     exit();
 }
 
@@ -30,7 +30,7 @@ try {
     $stmt->execute();
 
     // Redirect to appointments page after successful deletion
-    header("Location: clientappointments.php");
+    header("Location: client-appointments.php");
     exit();
 } catch (PDOException $e) {
     // Handle database errors gracefully (you might want to log these errors)

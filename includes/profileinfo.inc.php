@@ -30,5 +30,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profileInfo->updateProfileInfo($full_name, $profession, $firm, $specializationsJson, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about);
 
 
-    header("location: ../pract.dash.php?error=none");
+    header("location: ../pract-dashboard.php?error=none");
 }

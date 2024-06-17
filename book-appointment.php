@@ -154,7 +154,7 @@ $date = isset($_GET['date']) ? htmlspecialchars($_GET['date']) : date('Y-m-d');
                     <div class="alert alert-success" role="alert">
                         <?php echo $success_message; ?>
                     </div>
-                    <a href="client.php" class="btn btn-primary">Back to profiles</a>
+                    <a href="client-profiles.php" class="btn btn-primary">Back to profiles</a>
 
                 <?php elseif (!empty($error_message)) : ?>
                     <!-- Display error message with suggested next available time -->
@@ -165,7 +165,7 @@ $date = isset($_GET['date']) ? htmlspecialchars($_GET['date']) : date('Y-m-d');
 
                 <!-- Display booking form if no success message -->
                 <h2>Book an Appointment for <?php echo htmlspecialchars($date); ?></h2>
-                <form method="POST" action="book.php?practitioner_id=<?php echo htmlspecialchars($practitioner_id); ?>&date=<?php echo htmlspecialchars($date); ?>">
+                <form method="POST" action="book-appoitment.php?practitioner_id=<?php echo htmlspecialchars($practitioner_id); ?>&date=<?php echo htmlspecialchars($date); ?>">
                     <input type="hidden" name="date" value="<?php echo htmlspecialchars($date); ?>">
                     <div class="form-group">
                         <label for="time">Time</label>

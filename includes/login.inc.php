@@ -21,13 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     // Redirect user based on user type and profile completion
     $user_type = $login->getuser_type($username);
     if ($user_type === 'client') {
-        header("location:../client.php?login=success");
+        header("location:../client-profiles.php?login=success");
     } else {
         $profileComplete = $login->profileIncomplete($username);
         if ($profileComplete) {
             header("location:../dash.php?login=success");
         } else {
-            header("location:../pract.dash.php?error=incomplete_profile");
+            header("location:../pract-dashboard.php?error=incomplete_profile");
         }
     }
     exit();

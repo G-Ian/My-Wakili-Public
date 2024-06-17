@@ -150,7 +150,7 @@ class ProfileInfoContr extends ProfileInfo {
             $stmt = null;
             
             // Redirect to a success page or the profile settings page without an error
-            header("location: /MY WAKILI/pract.dash.php?success=profileupdated");
+            header("location: /MY WAKILI/pract-dashboard.php?success=profileupdated");
             exit();
             
         } catch (PDOException $e) {

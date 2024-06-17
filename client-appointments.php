@@ -88,7 +88,7 @@ echo 'Memory usage: ' . memory_get_usage() . ' bytes';
         <!-- Pagination -->
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <a href="clientappointments.php?page=<?= $i ?>" class="<?= ($page == $i) ? 'active' : '' ?>">
+                <a href="client-appointments.php?page=<?= $i ?>" class="<?= ($page == $i) ? 'active' : '' ?>">
                     <?= $i ?>
                 </a>
             <?php endfor; ?>

@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Check if booking_id is provided via GET or POST
 if (!isset($_GET['booking_id']) && !isset($_POST['booking_id'])) {
-    header("Location: clientappointments.php");
+    header("Location: client-appointments.php");
     exit();
 }
 
@@ -19,7 +19,7 @@ $booking_id = isset($_GET['booking_id']) ? filter_input(INPUT_GET, 'booking_id',
 
 if (!$booking_id) {
     // Handle invalid booking ID
-    header("Location: clientappointments.php");
+    header("Location: client-appointments.php");
     exit();
 }
 
@@ -36,7 +36,7 @@ try {
 
     if (!$booking) {
         // Handle booking not found
-        header("Location: clientappointments.php");
+        header("Location: client-appointments.php");
         exit();
     }
 
@@ -54,7 +54,7 @@ try {
         $updateStmt->execute();
 
         // Redirect after update
-        header("Location: clientappointments.php");
+        header("Location: client-appointments.php");
         exit();
     }
 } catch (PDOException $e) {
