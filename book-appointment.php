@@ -24,16 +24,17 @@ if (!isset($_SESSION['user_id'])) {
     die("You must be logged in to book an appointment.");
 }
 
-// Ensure practitioner ID is provided
-if (!isset($_GET['practitioner_id'])) {
-    die("No practitioner selected.");
-}
-
 // Retrieve user_id from session
 $user_id = $_SESSION['user_id'];
 
+// Ensure practitioner ID or date is provided
+if (!isset($_GET['practitioner_id']) || !isset($_GET['date'])) {
+    die("Missing required parameters.");
+}
+
 // Retrieve practitioner_id from GET parameter
 $practitioner_id = intval($_GET['practitioner_id']);
+$date = htmlspecialchars($_GET['date']);
 
 // Initialize variables
 $success_message = '';
@@ -127,9 +128,6 @@ function calculateNextAvailableTime($practitioner_id, $date, $time) {
     
     return false; // Return false if no available slots are found
 }
-
-// Retrieve and sanitize GET data (for initial page load, if needed)
-$date = isset($_GET['date']) ? htmlspecialchars($_GET['date']) : date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -185,7 +183,7 @@ $date = isset($_GET['date']) ? htmlspecialchars($_GET['date']) : date('Y-m-d');
                     </div>
                     <div class="form-group">
                         <label for="service_type">Service Type</label>
-                        <input type="text" class="form-control" id="service_type" name="service_type" placeholder="What type of service will you require? e.g Litigation, Court Process Server, Mediation, Commissioniong of Oaths .etc" required>
+                        <input type="text" class="form-control" id="service_type" name="service_type" placeholder="What type of service will you require? e.g Litigation, Court Process Server, Mediation, Commissioning of Oaths .etc" required>
                     </div>
                     <div class="form-group">
                         <label for="comments">Comments</label>

@@ -1,6 +1,6 @@
 <?php
 // Function to build the calendar for a given month and year
-function build_calendar($month, $year, $practitioner_id) {
+function build_calendar($month, $year, $user_id, $practitioner_id) {
     // Array of days of the week
     $daysOfWeek = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
     
@@ -76,11 +76,13 @@ function build_calendar($month, $year, $practitioner_id) {
         
         // Check if the current day is today
         $today = $date == date('Y-m-d') ? 'today' : '';
+
+        // Determine practitioner_id based on user_id
+        $practitioner_id = get_practitioner_id($user_id);
         
         // Create the cell for the current day with a clickable link
         $calendar .= "<td class='$today'><h3><a href='book-appointment.php?date=$date&practitioner_id=$practitioner_id'>$currentDayRel</a></h3></td>";
 
-        
         // Increment the day counter and day of the week
         $currentDay++;
         $dayOfWeek++;
@@ -99,6 +101,16 @@ function build_calendar($month, $year, $practitioner_id) {
 
     return $calendar;
 }
+
+// Function to get practitioner_id based on user_id
+function get_practitioner_id($user_id) {
+    // Assuming you have a database connection, perform a query to fetch practitioner_id
+    // Example query: SELECT practitioner_id FROM practitioners WHERE user_id = $user_id
+    // Replace this with your actual query
+    // For demo purposes, I'm returning a static value
+    return $user_id;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -118,9 +130,10 @@ function build_calendar($month, $year, $practitioner_id) {
                 <?php
                     // Retrieve practitioner_id from GET parameter
                     if (!isset($_GET['practitioner_id'])) {
-                        die("No practitioner selected.");
+                        die("No user selected.");
                     }
-                    $practitioner_id = intval($_GET['practitioner_id']);
+                    $user_id = intval($_GET['practitioner_id']);
+                    $practitioner_id = $_GET['practitioner_id'];
                     
                     // Get current month and year
                     $dateComponents = getdate();
@@ -135,7 +148,7 @@ function build_calendar($month, $year, $practitioner_id) {
                     }
 
                     // Display the calendar for the given month and year
-                    echo build_calendar($month, $year, $practitioner_id);
+                    echo build_calendar($month, $year, $user_id, $practitioner_id);
                 ?>
             </div>
         </div>
