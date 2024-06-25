@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 
 session_start();
-if (!isset($_SESSION["user_id"])) {
+if (!isset($_SESSION["practitioner_id"])) {
     header("Location: MY WAKILI/login.php");
     exit();
 }
@@ -13,12 +13,17 @@ include "classes/profileinfo-contr.classes.php";
 include "classes/profileinfo-view.classes.php";
 
 $profileInfo = new ProfileInfoView();
-$profileData = $profileInfo->fetchProfileInfo($_SESSION["user_id"]);
+$profileData = $profileInfo->fetchProfileInfo($_SESSION["practitioner_id"]);
 
 if ($profileData === null) {
     // Handle the case where the profile is not found
+    // You can redirect to a create profile page or display a message
     echo "<p>Profile not found. Please create your profile.</p>";
+    // Example: redirect to create profile page
+    // header("Location: create_profile.php");
+    // exit();
 } else {
+    // Retrieve profile data
     $fullName = $profileData[0]['full_name'];
     $userEmail = $profileData[0]['user_email'];
     $profession = $profileData[0]['profession'];
@@ -31,7 +36,8 @@ if ($profileData === null) {
     $physicalAddress = $profileData[0]['physical_address'];
     $profileAbout = $profileData[0]['profile_about'];
     // Other profile fields...
-}
+
+    // HTML form starts here
 ?>
 
 <!DOCTYPE html>
@@ -54,29 +60,29 @@ if ($profileData === null) {
 
     <h1>Update Your Profile</h1>
     <form action="includes/profileinfo.inc.php" method="post" enctype="multipart/form-data" class="body-form"> <!-- Add enctype attribute for file upload -->
-        <!-- <label for="profile_picture">Profile Picture:</label><br>
-        <input type="file" id="profile_picture" name="profile_picture" accept="image/*"><br> Add file input for profile picture -->
+        <!-- Input fields for profile information -->
         <label for="full_name">Full Name:</label><br>
         <input type="text" id="full_name" name="full_name" placeholder="Enter your Full Name" value="<?php echo $fullName ?? ''; ?>" required><br>
         <label for="profile_about">Profile About:</label><br>
         <textarea id="profile_about" name="profile_about" placeholder="Tell potential clients about yourself" required><?php echo $profileAbout ?? ''; ?></textarea><br>
         
         <label for="profession">Profession:</label><br>
-            <select id="profession" name="profession" required onchange="showSpecializations()">
-                <option value="">Select Profession</option>
-                <?php
-                $professions = array(
-                    "Advocate", "Prosecutor", "Paralegal", "Court Process Server",
-                    "Court Clerk", "Investigator", "Mediator", "Legal Assistant",
-                    "Clerk", "Solicitor", "Commissioner of Oaths", "Judge", "Other"
-                );
-                foreach ($professions as $prof) {
-                    $selected = ($prof == $profession) ? 'selected' : '';
-                    echo '<option value="' . $prof . '" ' . $selected . '>' . $prof . '</option>';
-                }
-                ?>
-            </select><br>
-            <input type="text" id="other_profession" name="other_profession" style="display: <?php echo ($profession == 'Other') ? 'block' : 'none'; ?>;" placeholder="Enter your profession" value="<?php echo $profession == 'Other' ? htmlspecialchars($otherProfession) : ''; ?>">
+        <select id="profession" name="profession" required onchange="showSpecializations()">
+            <option value="">Select Profession</option>
+            <?php
+            $professions = array(
+                "Advocate", "Prosecutor", "Paralegal", "Court Process Server",
+                "Court Clerk", "Investigator", "Mediator", "Legal Assistant",
+                "Clerk", "Solicitor", "Commissioner of Oaths", "Judge", "Other"
+            );
+            foreach ($professions as $prof) {
+                $selected = ($prof == $profession) ? 'selected' : '';
+                echo '<option value="' . $prof . '" ' . $selected . '>' . $prof . '</option>';
+            }
+            ?>
+        </select><br>
+
+        <input type="text" id="other_profession" name="other_profession" style="display: <?php echo ($profession == 'Other') ? 'block' : 'none'; ?>;" placeholder="Enter your profession" value="<?php echo $profession == 'Other' ? htmlspecialchars($otherProfession) : ''; ?>">
 
                     
       
@@ -159,11 +165,13 @@ if ($profileData === null) {
         }
     </script>
 
-    </form>
-
     <footer>
         <p>&copy; <?php echo date("Y"); ?> Gallant Media. All rights reserved.</p>
     </footer>
     
 </body>
 </html>
+
+<?php
+} // End of else block for profileData check
+?>

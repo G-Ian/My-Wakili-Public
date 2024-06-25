@@ -1,8 +1,23 @@
 <?php
 error_reporting(E_ALL);
+
+// Start or resume the session
+session_start();
+
+// Check if practitioner_id is set in the session
+if (!isset($_SESSION["practitioner_id"])) {
+    // Redirect to login or appropriate page if practitioner_id is not set
+    header("location: index.php?error=not_logged_in");
+    exit();
+}
+
+// Include necessary files
 include "classes/dbh.classes.php";
 include "classes/profileinfo.classes.php";
 include "classes/profileinfo-view.classes.php";
+
+// Assuming you have the practitioner_id stored in the session
+$practitioner_id = $_SESSION["practitioner_id"];
 
 $profileInfo = new ProfileInfoView();
 ?>
@@ -21,7 +36,7 @@ $profileInfo = new ProfileInfoView();
 
     <?php include 'includes/pract_header.inc.php'; ?>
 
-    <br><br><br>
+    
     <div class="container">
         <div class="sidebar">
             <img src="images/profile-picture.jpg" alt="Profile Picture" class="profile-picture" id="profile-picture">
@@ -30,17 +45,16 @@ $profileInfo = new ProfileInfoView();
                 <div class="info-item">
                     <p class="item-data2">
                         <?php
-                            $profileInfo->fetchProfession($_SESSION["user_id"]);
+                            $profileInfo->fetchProfession($practitioner_id);
                         ?>
                     </p>
                 </div>
             
                 <h1 class="username2" id="fullname">
                     <?php
-                        $profileInfo->fetchFullname($_SESSION["user_id"]);
+                        $profileInfo->fetchFullname($practitioner_id);
                     ?>
                 </h1>
-
 
                 <br><br><br>
                 <div class="social-media">
@@ -51,7 +65,7 @@ $profileInfo = new ProfileInfoView();
                 </div>
 
                 <form action="pract-profilesettings.php" method="post">
-                    <input type="hidden" name="user_id" value="<?= $userID ?>">
+                    <input type="hidden" name="practitioner_id" value="<?= $practitioner_id ?>">
                     <button class="book-appointment-button">Update Profile</button>
                 </form>
                 
@@ -65,7 +79,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Profession:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchProfession($_SESSION["user_id"]);
+                                $profileInfo->fetchProfession($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -74,7 +88,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Professional Bio:</p>
                         <p class="bio-text">
                             <?php
-                                $profileInfo->fetchBioText($_SESSION["user_id"]);
+                                $profileInfo->fetchBioText($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -83,7 +97,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Year of Admission:</p>
                         <p class="item-data">
                         <?php
-                                $profileInfo->fetchExperience($_SESSION["user_id"]);
+                                $profileInfo->fetchExperience($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -92,7 +106,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Specializations:</p>
                         <p class="item-data">
                         <?php
-                                $profileInfo->fetchSpecializations($_SESSION["user_id"]);
+                                $profileInfo->fetchSpecializations($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -101,7 +115,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Firm:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchFirm($_SESSION["user_id"]);
+                                $profileInfo->fetchFirm($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -112,7 +126,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Location:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchAddress($_SESSION["user_id"]);
+                                $profileInfo->fetchAddress($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -121,7 +135,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Email:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchEmail($_SESSION["user_id"]);
+                                $profileInfo->fetchEmail($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -130,7 +144,7 @@ $profileInfo = new ProfileInfoView();
                         <p class="item-label">Phone Number:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchPhoneNumber($_SESSION["user_id"]);
+                                $profileInfo->fetchPhoneNumber($practitioner_id);
                             ?>
                         </p>
                     </div>
@@ -143,8 +157,8 @@ $profileInfo = new ProfileInfoView();
                     <p class="item-label">Working Hours:</p>
                     <p class="item-data">
                         <?php
-                            $startHours = $profileInfo->fetchStartHours($_SESSION["user_id"]);
-                            $endHours = $profileInfo->fetchEndHours($_SESSION["user_id"]);
+                            $startHours = $profileInfo->fetchStartHours($practitioner_id);
+                            $endHours = $profileInfo->fetchEndHours($practitioner_id);
                             echo "$startHours to $endHours";
                         ?>
                     </p>
