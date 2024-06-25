@@ -25,15 +25,15 @@ class ProfileInfo extends Dbh {
         return $profilesData;
     }
     
-    // Fetch profile information for a given user_id
-    public function fetchProfileInfo($user_id) {
-        return $this->getProfileInfo($user_id);
+    // Fetch profile information for a given practitioner_id
+    public function fetchProfileInfo($practitioner_id) {
+        return $this->getProfileInfo($practitioner_id);
     }
 
     // Protected method to get profile information from the database
-    protected function getProfileInfo($user_id) {
+    protected function getProfileInfo($practitioner_id) {
         // Prepare the SQL statement
-        $stmt = $this->connect()->prepare('SELECT * FROM profiles WHERE user_id = ?');
+        $stmt = $this->connect()->prepare('SELECT * FROM profiles WHERE practitioner_id = ?');
 
         // Check if the SQL statement was prepared successfully
         if (!$stmt) {
@@ -42,7 +42,7 @@ class ProfileInfo extends Dbh {
         }
 
         // Execute the SQL statement with the provided $user_id
-        $success = $stmt->execute([$user_id]);
+        $success = $stmt->execute([$practitioner_id]);
 
         // Check if the SQL statement execution was successful
         if (!$success) {

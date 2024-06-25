@@ -45,13 +45,13 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
                     ?>
                     <!-- Check if profile picture exists and is not empty -->
                     <?php if (isset($profile['profile_picture']) && !empty($profile['profile_picture'])): ?>
-                        <a href="client-profile.php?user_id=<?= $profile['user_id'] ?>"><img src="<?= htmlspecialchars($profile['profile_picture'], ENT_QUOTES, 'UTF-8') ?>" alt="Profile Picture" class="profile-picture"></a>
+                        <a href="client-profile.php?practitioner_id=<?= $profile['practitioner_id'] ?>"><img src="<?= htmlspecialchars($profile['profile_picture'], ENT_QUOTES, 'UTF-8') ?>" alt="Profile Picture" class="profile-picture"></a>
                     <?php else: ?>
-                        <a href="client-profile.php?user_id=<?= $profile['user_id'] ?>"><div class="profile-picture initials"><?= $initials ?></div></a>
+                        <a href="client-profile.php?practitioner_id=<?= $profile['practitioner_id'] ?>"><div class="profile-picture initials"><?= $initials ?></div></a>
                     <?php endif; ?>
                     
                     <!-- Linking to the lawyer's profile & showing profile info -->
-                    <h2><a href="client-profile.php?user_id=<?= $profile['user_id'] ?>"><?= htmlspecialchars($profile['full_name'], ENT_QUOTES, 'UTF-8') ?></h2>
+                    <h2><a href="client-profile.php?practitioner_id=<?= $profile['practitioner_id'] ?>"><?= htmlspecialchars($profile['full_name'], ENT_QUOTES, 'UTF-8') ?></h2>
 
                     <p class="profession"><?= htmlspecialchars($profile['profession'], ENT_QUOTES, 'UTF-8') ?></p>
                     <p class="firm"><?= htmlspecialchars($profile['firm'], ENT_QUOTES, 'UTF-8') ?></p>
