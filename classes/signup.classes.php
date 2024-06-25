@@ -23,7 +23,7 @@ class Signup extends Dbh {
             $user_id = $user_idArray[0]["user_id"];
     
             // Set default profile info
-            $this->defaultProfileInfo($user_id, $username, $user_email);
+            $this->defaultProfileInfo($user_id, $practitioner_id, $username, $user_email);
         }
 
     }
@@ -53,6 +53,25 @@ class Signup extends Dbh {
         if(!$stmt->execute(array($username))) {
             $stmt = null;
             header("location:../signup.php?error=getuser_idfailed(newuser)");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0) {
+            $stmt = null;
+            header("location:../signup.php?error=profilenotfound");
+            exit();
+        }
+
+        $profileData = $stmt->fetchALL(PDO::FETCH_ASSOC);
+
+        return $profileData;
+    }
+
+    protected function getpractitioner_id($username) {
+        $stmt = $this->connect()->prepare('SELECT practitioner_id FROM practitioners WHERE username = ?;');
+        if(!$stmt->execute(array($username))) {
+            $stmt = null;
+            header("location:../signup.php?error=getpractitioner_idfailed(newuser)");
             exit();
         }
 

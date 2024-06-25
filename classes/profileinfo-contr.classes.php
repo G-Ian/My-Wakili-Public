@@ -5,17 +5,19 @@ require_once "profileinfo.classes.php"; // Include the file containing the Profi
 class ProfileInfoContr extends ProfileInfo {
 
     private $user_id;
+    private $practitioner_id;
     private $username;
     private $user_type;
 
-    public function __construct($user_id, $username, $user_type) {
+    public function __construct($user_id, $practitioner_id, $username, $user_type) {
         $this->user_id = $user_id;
+        $this->practitioner_id = $practitioner_id;
         $this->username = $username;
         $this->user_type = $user_type;
     }
 
     // Adding default profile Infomation to database and adding username,email & type
-    public function defaultProfileInfo($user_id, $username, $user_email) {
+    public function defaultProfileInfo($user_id, $practitioner_id, $username, $user_email) {
         $full_name = "Enter your full name";
         $profession = "Tell clients your profession";
         $firm = "Which firm or company are you affiliated with?";
@@ -30,7 +32,7 @@ class ProfileInfoContr extends ProfileInfo {
         // Call setProfileInfo with appropriate arguments
         if ($this->user_type === 'legal_practitioner') {
             // Set profile info
-            $this->setProfileInfo($this->user_id, $username, $user_email, $full_name, $profession, $firm, $specializations, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about);
+            $this->setProfileInfo($this->user_id, $this->practitioner_id, $username, $user_email, $full_name, $profession, $firm, $specializations, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about);
 
             // Retrieve practitioner_id
             $practitionerId = $this->getPractitionerId($user_id);

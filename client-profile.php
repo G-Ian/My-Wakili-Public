@@ -6,8 +6,8 @@ include "classes/profileinfo-view.classes.php";
 
 $profileInfo = new ProfileInfoView();
 
-// Retrieve practitioner_id from GET parameter (assuming it's passed in the URL)
-$practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
+// Retrieve user_id from GET parameter (assuming it's passed in the URL)
+$user_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -32,14 +32,16 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                 <div class="info-item">
                     <p class="item-data2">
                         <?php
-                            $profileInfo->fetchProfession($practitioner_id);
+                            // Example method call using $user_id directly
+                            $profileInfo->fetchProfession($user_id);
                         ?>
                     </p>
                 </div>
 
                 <h1 class="username2" id="fullname">
                     <?php
-                        $profileInfo->fetchFullname($practitioner_id);
+                        // Example method call using $user_id directly
+                        $profileInfo->fetchFullname($user_id);
                     ?>
                 </h1>
             </div>
@@ -52,8 +54,9 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                 <a href="#" class="social-link" id="linkedin-link" target="_blank">LinkedIn</a>
             </div>
 
+            <!-- Form now uses user_id instead of practitioner_id -->
             <form action="book-calendar.php" method="get">
-                <input type="hidden" name="practitioner_id" value="<?php echo htmlspecialchars($practitioner_id); ?>">
+                <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
                 <button type="submit" class="book-appointment-button">Book Appointment</button>
             </form>
 
@@ -67,7 +70,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Profession:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchProfession($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchProfession($user_id);
                             ?>
                         </p>
                     </div>
@@ -76,7 +80,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Professional Bio:</p>
                         <p class="bio-text">
                             <?php
-                                $profileInfo->fetchBioText($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchBioText($user_id);
                             ?>
                         </p>
                     </div>
@@ -85,7 +90,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Year of Admission:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchExperience($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchExperience($user_id);
                             ?>
                         </p>
                     </div>
@@ -94,7 +100,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Specializations:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchSpecializations($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchSpecializations($user_id);
                             ?>
                         </p>
                     </div>
@@ -103,7 +110,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Firm:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchFirm($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchFirm($user_id);
                             ?>
                         </p>
                     </div>
@@ -114,7 +122,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Location:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchAddress($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchAddress($user_id);
                             ?>
                         </p>
                     </div>
@@ -122,7 +131,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Email:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchEmail($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchEmail($user_id);
                             ?>
                         </p>
                     </div>
@@ -130,7 +140,8 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                         <p class="item-label">Phone Number:</p>
                         <p class="item-data">
                             <?php
-                                $profileInfo->fetchPhoneNumber($practitioner_id);
+                                // Example method call using $user_id directly
+                                $profileInfo->fetchPhoneNumber($user_id);
                             ?>
                         </p>
                     </div>
@@ -143,8 +154,9 @@ $practitioner_id = isset($_GET['user_id']) ? $_GET['user_id'] : '';
                     <p class="item-label">Working Hours:</p>
                     <p class="item-data">
                         <?php
-                            $startHours = $profileInfo->fetchStartHours($practitioner_id);
-                            $endHours = $profileInfo->fetchEndHours($practitioner_id);
+                            // Example method call using $user_id directly
+                            $startHours = $profileInfo->fetchStartHours($user_id);
+                            $endHours = $profileInfo->fetchEndHours($user_id);
                             echo "$startHours to $endHours";
                         ?>
                     </p>

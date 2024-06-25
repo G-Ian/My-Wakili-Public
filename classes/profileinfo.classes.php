@@ -87,15 +87,15 @@ class ProfileInfo extends Dbh {
     }
 
     // Protected method to insert new profile information into the database
-    protected function setProfileInfo($user_id, $username, $user_email, $full_name, $profession, $firm, $specializations, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about) {
+    protected function setProfileInfo($user_id, $practitioner_id, $username, $user_email, $full_name, $profession, $firm, $specializations, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about) {
         // Prepare the SQL statement
-        $stmt = $this->connect()->prepare('INSERT INTO profiles (user_id, username, user_email, full_name, profession, firm, specializations, experience_years, phone_number, working_hours_start, working_hours_end, physical_address, profile_about) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);');
+        $stmt = $this->connect()->prepare('INSERT INTO profiles (user_id, practitioner_id, username, user_email, full_name, profession, firm, specializations, experience_years, phone_number, working_hours_start, working_hours_end, physical_address, profile_about) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);');
 
         // Convert the specializations array to a JSON string
         $specializationsJson = json_encode($specializations);
 
         // Execute the SQL statement with the provided data
-        if (!$stmt->execute(array($user_id, $username, $user_email, $full_name, $profession, $firm, $specializationsJson, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about))) {
+        if (!$stmt->execute(array($user_id, $practitioner_id, $username, $user_email, $full_name, $profession, $firm, $specializationsJson, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about))) {
             // Handle the case where the SQL statement execution failed
             $stmt = null;
             header("location:/MY WAKILI/pract-profilesettings.php?error=setprofileinfofailed");

@@ -24,6 +24,7 @@ CREATE TABLE practitioners (
 CREATE TABLE profiles (
     profiles_id INT NOT NULL AUTO_INCREMENT,
     user_id INT UNIQUE,
+    practitioner_id INT UNIQUE,
     username VARCHAR(30) NOT NULL,
     full_name VARCHAR(100) NOT NULL,
     user_email VARCHAR(100) NOT NULL,
@@ -37,7 +38,8 @@ CREATE TABLE profiles (
     physical_address VARCHAR(100) NOT NULL,
     profile_about TEXT NOT NULL,
     PRIMARY KEY (profiles_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (practitioner_id) REFERENCES practitioners(practitioner_id)
 );
 
 
@@ -71,7 +73,7 @@ CREATE TABLE bookings (
 
 
 
-
+-- Trigger to create an entry into the practitioners table after a new user(i.e. legal practitioner) creates an account
 DELIMITER //
 
 CREATE TRIGGER create_practitioner_after_insert
@@ -86,4 +88,35 @@ END;
 //
 
 DELIMITER ;
+
+
+
+
+-- Trigger to insert and update practitioners table Full name and profession then the user creates and updates their profile.
+DELIMITER //
+
+CREATE TRIGGER update_practitioner_after_insert
+AFTER INSERT ON profiles
+FOR EACH ROW
+BEGIN
+    UPDATE practitioners
+    SET full_name = NEW.full_name,
+        profession = NEW.profession
+    WHERE practitioner_id = NEW.practitioner_id;
+END;
+//
+
+CREATE TRIGGER update_practitioner_after_update
+AFTER UPDATE ON profiles
+FOR EACH ROW
+BEGIN
+    UPDATE practitioners
+    SET full_name = NEW.full_name,
+        profession = NEW.profession
+    WHERE practitioner_id = NEW.practitioner_id;
+END;
+//
+
+DELIMITER ;
+
 

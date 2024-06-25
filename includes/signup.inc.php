@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
     if ($user_type === 'legal_practitioner') {
         // Fetch user_id after signup
         $user_id = $signup->fetchuser_id($username);
+        $practitioner_id = $signup->fetchpractitioner_id($username);
 
         // Instantiate ProfileInfoContr class
         include "../classes/profileinfo.classes.php";
@@ -43,10 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]))
 
 
         // Provide required arguments when calling defaultProfileInfo
-        $profileInfo = new ProfileInfoContr($user_id, $username, $user_type);
+        $profileInfo = new ProfileInfoContr($user_id, $practitioner_id, $username, $user_type);
         
         // Call defaultProfileInfo with the appropriate arguments
-        $profileInfo->defaultProfileInfo($user_id, $username, $user_email, $defaultSpecializations);
+        $profileInfo->defaultProfileInfo($user_id, $practitioner_id, $username, $user_email, $defaultSpecializations);
         
         // Redirect to profile page
         header("location: ../login.php?signup=success");

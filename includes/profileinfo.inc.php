@@ -9,6 +9,7 @@ include "../classes/profileinfo-contr.classes.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $user_id = $_SESSION["user_id"];
+    $practitioner_id = $_SESSION["practitioner_id"];
     $username = $_SESSION["username"];
     $user_type = $_SESSION["user_type"];
     $full_name = htmlspecialchars($_POST["full_name"], ENT_QUOTES, "UTF-8");
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Convert the specializations array to a JSON string
     $specializationsJson = json_encode($specializations);
 
-    $profileInfo = new ProfileInfoContr($user_id, $username, $user_type);
+    $profileInfo = new ProfileInfoContr($user_id, $practitioner_id, $username, $user_type);
 
     $profileInfo->updateProfileInfo($full_name, $profession, $firm, $specializationsJson, $experience_years, $phone_number, $working_hours_start, $working_hours_end, $physical_address, $profile_about);
 

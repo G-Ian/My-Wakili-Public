@@ -121,6 +121,11 @@ class SignupContr extends Signup {
         return $user_id[0]["user_id"];
     }
 
+    public function fetchpractitioner_id($username) {
+        $user_id = $this->getpractitioner_id($username);
+        return $user_id[0]["practitioner_id"];
+    }
+
     private function getLastuser_id() {
         $stmt = $this->connect()->prepare("SELECT user_id FROM users WHERE username = ? AND user_email = ?;");
         $stmt->execute([$this->username, $this->user_email]);
@@ -128,8 +133,15 @@ class SignupContr extends Signup {
         return $row['user_id'];
     }
 
+    private function getLastpractitioner_id() {
+        $stmt = $this->connect()->prepare("SELECT practitioner_id FROM practitioners WHERE username = ? AND user_email = ?;");
+        $stmt->execute([$this->username, $this->user_email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['practitioner_id'];
+    }
+
     private function setProfileInfo($user_id, $username, $user_email) {
-        $stmt = $this->connect()->prepare('INSERT INTO profiles (user_id, username, user_email, full_name, profession, firm, experience_years, phone_number, working_hours_start, working_hours_end, physical_address, profile_about) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);');
+        $stmt = $this->connect()->prepare('INSERT INTO profiles (user_id, practitioner_id, username, user_email, full_name, profession, firm, experience_years, phone_number, working_hours_start, working_hours_end, physical_address, profile_about) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);');
 
         if (!$stmt->execute([$user_id, $username, $user_email, 'Enter your full name', 'Tell clients your profession', 'Which firm or company are you affiliated with?', '1900', 'Enter a phone number', 'When are you available to meet with clients?', 'Where can clients find you', 'Tell potential clients about yourself'])) {
             $stmt = null;

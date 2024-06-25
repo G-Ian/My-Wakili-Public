@@ -14,7 +14,7 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practitioners</title>
+    <title>Legal Practitioners</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/client.css">
@@ -62,6 +62,7 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
                     $specializationsString = is_array($specializations) ? implode(', ', $specializations) : '';
                     ?>
                     <p class="specializations"><?= htmlspecialchars($specializationsString, ENT_QUOTES, 'UTF-8') ?></p>
+                    <p class="areas-of-expertise">Location:</p>
                     <p class="physical-address"><?= htmlspecialchars($profile['physical_address'], ENT_QUOTES, 'UTF-8') ?></p>
                     
                     </a> 
