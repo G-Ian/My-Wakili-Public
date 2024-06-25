@@ -46,6 +46,8 @@ $total_pages = ceil($total_appointments / $limit);
                 <tr>
                     <th>Booking ID</th>
                     <th>Client's Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
                     <th>Service Type</th>
                     <th>Comments</th>
                     <th>Date of Appointment</th>
@@ -59,6 +61,8 @@ $total_pages = ceil($total_appointments / $limit);
                     <tr>
                         <td><?= htmlspecialchars($appointment['booking_id']) ?></td>
                         <td><?= htmlspecialchars($appointment['client_name']) ?></td>
+                        <td><?= htmlspecialchars($appointment['client_email']) ?></td>
+                        <td><?= htmlspecialchars($appointment['client_phone']) ?></td>
                         <td><?= htmlspecialchars($appointment['service_type']) ?></td>
                         <td><?= htmlspecialchars($appointment['comments']) ?></td>
                         <td><?= htmlspecialchars($appointment['date']) ?></td>

@@ -29,7 +29,7 @@ class Booking extends Dbh {
     }
 
     protected function getPractitionerBookings($practitioner_id, $limit, $offset) {
-        $sql = "SELECT b.booking_id, b.client_name, b.service_type, b.comments, b.date, b.time, b.updated_at, 
+        $sql = "SELECT b.booking_id, b.client_name, b.client_email , b.client_phone, b.service_type, b.comments, b.date, b.time, b.updated_at, 
                        p.full_name AS practitioner_name, 
                        p.user_id AS practitioner_user_id
                 FROM bookings b

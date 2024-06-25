@@ -76,10 +76,12 @@
     padding: 20px;
     background-color: #f4f4f4;
     border-right: 1px solid #ccc;
+    max-width: 70%;
 }
 
 .bio-data, .social-media {
     margin-bottom: 20px;
+    width: 90%;
 }
 
 .bio-text, .social-link {
