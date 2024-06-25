@@ -52,5 +52,12 @@ class loginContr extends Login {
         return $result > 0;
     }
 
+    public function getPractitionerId($username) {
+        $stmt = $this->connect()->prepare('SELECT practitioner_id FROM profiles WHERE username = ?');
+        $stmt->execute([$username]);
+        $result = $stmt->fetchColumn();
+        return $result;
+    }    
+
     
 }
