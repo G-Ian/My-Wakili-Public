@@ -71,3 +71,46 @@ nav ul li a:hover {
 }
 
 
+@media (max-width: 768px) {
+    .medium-text {
+        font-size: 1.2em;
+    }
+
+    .large-text {
+        font-size: 2em;
+    }
+
+    .find-lawyer-button, .iam-lawyer-button {
+        padding: 8px 16px;
+    }
+
+    .instruction-text p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .medium-text {
+        font-size: 1em;
+    }
+
+    .large-text {
+        font-size: 1.5em;
+    }
+
+    .find-lawyer-button, .iam-lawyer-button {
+        width: 80%;
+        padding: 10px;
+    }
+
+    .instruction-text p {
+        font-size: 0.8em;
+    }
+}
+
+

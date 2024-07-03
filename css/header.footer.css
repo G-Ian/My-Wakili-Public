@@ -204,3 +204,54 @@ footer {
   text-align: center;
   z-index: 1;
 }
+
+
+@media (max-width: 768px) {
+  .header-main nav {
+      flex-direction: column;
+  }
+
+  .header-main ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .header-main ul li {
+      margin: 10px 0;
+  }
+
+  .logout {
+      flex-direction: column;
+      margin-top: 10px;
+  }
+
+  .logout .username {
+      margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-main nav {
+      padding: 0 10px;
+  }
+
+  .header-main ul li a {
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  .header-main ul ul li a {
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  .logout .username {
+      padding: 8px 10px;
+      font-size: 14px;
+  }
+
+  .logout .logout-button {
+      padding: 8px 10px;
+      font-size: 14px;
+  }
+}

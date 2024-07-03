@@ -20,6 +20,7 @@ $practitioner_id = isset($_GET['practitioner_id']) ? $_GET['practitioner_id'] : 
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/dash.css">
+    
 </head>
 <body>
 

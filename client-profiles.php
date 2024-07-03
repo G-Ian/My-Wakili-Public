@@ -18,6 +18,7 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/client.css">
+
 </head>
 <body>
     <?php include 'includes/client_header.inc.php'; ?>
