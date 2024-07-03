@@ -1,5 +1,6 @@
 <?php
-session_start(); // Start the session
+session_start();
+error_reporting(0); // Suppress PHP warnings
 
 // Check if the user is logged in
 if (isset($_SESSION["username"])) {
@@ -16,7 +17,9 @@ if (isset($_SESSION["username"])) {
         <a href="index.php" class="logo">
             <img src="images/wlogo.png" alt="My Wakili">
         </a>
-        <ul>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="menu">
             <li><a href="client-profiles.php">Home</a></li>
             <li><a href="client-profiles.php">Lawyers</a>
                 <ul>
@@ -42,10 +45,7 @@ if (isset($_SESSION["username"])) {
             </li>
             <li><a href="#">Contact Us</a></li>
         </ul>
-    </nav>
 
-    
-    
         <!-- Begin: Added Username Display and Session Check -->
         <div class="logout">
             <a href="#" class="username">Welcome, <?php echo htmlspecialchars($username); ?>!</a> <!-- Display the username as a link -->
@@ -54,5 +54,5 @@ if (isset($_SESSION["username"])) {
             </form>
         </div>
         <!-- End: Added Username Display and Session Check -->
-    
+    </nav>
 </header>
