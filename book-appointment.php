@@ -4,6 +4,14 @@ session_start();
 // Include database connection class
 include('classes/dbh.classes.php');
 
+// Include PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 // Function to get database connection
 function getDbConnection() {
     try {
@@ -77,7 +85,98 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $conn = getDbConnection(); // Call the function to get DB connection
             $stmt = $conn->prepare($sql);
             $stmt->execute([$user_id, $practitioner_id, $date, $time, $client_name, $client_email, $client_phone, $service_type, $comments]);
+            $booking_id = $conn->lastInsertId(); // Get the last inserted booking ID
             $success_message = "Booking successfully made!"; // Set success message after booking
+
+            // Get practitioner's email from the database
+            $sql = "SELECT `user_email` FROM profiles WHERE practitioner_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$practitioner_id]);
+            $practitioner_email = $stmt->fetchColumn();
+
+            // Get practitioner's name from the database
+            $sql = "SELECT `full_name` FROM profiles WHERE practitioner_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$practitioner_id]);
+            $practitioner_name = $stmt->fetchColumn();
+
+            // Send email to practitioner
+            $mail = new PHPMailer(true);
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'mywakili.co.ke@gmail.com';
+                $mail->Password = 'lpvaatlcfirrghjn';
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                // Practitioner email
+                $mail->setFrom('mywakili.co.ke@gmail.com', 'My Wakili');
+                $mail->addAddress($practitioner_email);
+                $mail->isHTML(true);
+                $mail->Subject = 'New Appointment Booking';
+                $mail->Body = "A new appointment has been booked.<br>
+                               Client's Name: $client_name<br>
+                               Client's Email: $client_email<br>
+                               Client's Phone: $client_phone<br>
+                               Service Type: $service_type<br>
+                               Comments: $comments<br>
+                               Date: $date<br>
+                               Time: $time";
+
+                // Disabled SSL verification for testing
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                    )
+                );
+                            
+                $mail->send();
+            } catch (Exception $e) {
+                echo "Message could not be sent to practitioner. Mailer Error: {$mail->ErrorInfo}";
+            }
+
+            // Send email to client
+            $mail = new PHPMailer(true);
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'mywakili.co.ke@gmail.com';
+                $mail->Password = 'lpvaatlcfirrghjn';
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                // Client email
+                $mail->setFrom('mywakili.co.ke@gmail.com', 'My Wakili');
+                $mail->addAddress($client_email);
+                $mail->isHTML(true);
+                $mail->Subject = 'Appointment Confirmation';
+                $mail->Body = "You have successfully booked an appointment.<br>
+                               Booking ID: $booking_id<br>
+                               Practitioner: $practitioner_name<br>
+                               Service Type: $service_type<br>
+                               Comments: $comments<br>
+                               Date: $date<br>
+                               Time: $time";
+                               
+                               
+                // Disabled SSL verification for testing
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                    )
+                );
+
+                $mail->send();
+            } catch (Exception $e) {
+                echo "Message could not be sent to client. Mailer Error: {$mail->ErrorInfo}";
+            }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
