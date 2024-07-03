@@ -20,7 +20,7 @@ require_once 'includes/signup_view.inc.php';
 </head>
 <body>
 
-    <header>
+    <!-- <header>
         <nav>
             <ul>
                 <li><a href="#lawyers">Find a lawyer</a></li>
@@ -32,7 +32,7 @@ require_once 'includes/signup_view.inc.php';
             
         </nav>
         
-    </header>
+    </header> -->
 
 
     <section class="login-signup">
