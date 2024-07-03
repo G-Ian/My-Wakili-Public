@@ -16,7 +16,7 @@ session_start();
 
 <body>
  
-    <header>
+    <!-- <header>
         <nav>
             <ul>
                 <li><a href="#lawyers">Find a lawyer</a></li>
@@ -26,7 +26,7 @@ session_start();
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
 
     
     <br><br><br><br>
