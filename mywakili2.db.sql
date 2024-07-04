@@ -120,3 +120,8 @@ END;
 DELIMITER ;
 
 
+
+ALTER TABLE users ADD COLUMN is_admin TINYINT(1) DEFAULT 0;
+
+
+
