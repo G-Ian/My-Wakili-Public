@@ -5,7 +5,7 @@ class Dbh {
     private $user = "root";
     private $pwd = "";
     private $dbName = "mywakili2";
-    private $port = 3307; // Ensure this matches your MySQL port
+    private $port = 3307; 
 
     protected function connect() {
         try {
