@@ -1,15 +1,35 @@
-body {
-    align-self: center;
-}
 
-table {
-    table-layout: fixed;
-    row-gap: 10px;
-    column-gap: 50px;
-    border: 2px;
-}
- 
 h1 {
     font-size: x-large;
     font-weight: bold;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.search-container button:hover {
+    background-color: #555;
 }

@@ -1,4 +1,3 @@
-
 <?php
 error_reporting(E_ALL);
 
@@ -8,6 +7,31 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 
+require_once 'classes/dbh.classes.php';
+
+// Fetch documents from the database based on the search keyword
+function getDocuments($keyword = '') {
+    $dbh = new Dbh();
+    $pdo = $dbh->getPdo();
+
+    $sql = 'SELECT * FROM documents';
+    if ($keyword) {
+        $sql .= ' WHERE document_name LIKE :keyword';
+    }
+    
+    $stmt = $pdo->prepare($sql);
+
+    if ($keyword) {
+        $stmt->bindValue(':keyword', '%' . $keyword . '%');
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Get the search keyword if it exists
+$keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+$documents = getDocuments($keyword);
 ?>
 
 <!DOCTYPE html>
@@ -16,25 +40,59 @@ if (!isset($_SESSION["user_id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeDownloads</title>
+    <link rel="stylesheet" type="text/css" href="css/appointments.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/documents.css">
 
 </head>
 <body>
 
+<?php include 'includes/client_header.inc.php'; ?>
+
+<br>
 
 <div>
-    <table >
-        <h1>FREE DOWNLOADS</h1>
-        <h2>Find a wide array of legal documents for free donwload</h2>
+    <h1>FREE DOWNLOADS</h1>
+    
+    <!-- Search Form -->
+    <div class="search-container">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <input type="text" name="search" placeholder="Search documents by keyword">
+            <button type="submit" class="">Search</button>
+        </form>
+    </div>
 
-        <th>Document Name</th>
-        <th>Document Type(Class/Where it can be used)</th>
-        <th>Document downloadlink</th>
-        <th>Description</th>
+    <h2>Find a wide array of legal documents for free download</h2>
+
+
+    <table border="1">
+        <tr>
+            <th>Document ID</th>
+            <th>Document Name</th>
+            <th>Download</th>
+        </tr>
+        <?php if (count($documents) > 0): ?>
+            <?php foreach ($documents as $document): ?>
+                <tr>
+                    <td><?php echo $document['document_id']; ?></td>
+                    <td><?php echo $document['document_name']; ?></td>
+                    <td>
+                        <form action="classes/download.classes.php" method="GET">
+                            <input type="hidden" name="document_id" value="<?php echo $document['document_id']; ?>">
+                            <button type="submit">Download</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="3">No documents found.</td>
+            </tr>
+        <?php endif; ?>
     </table>
 </div>
-    
+
 </body>
 </html>
