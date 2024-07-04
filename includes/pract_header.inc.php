@@ -17,8 +17,8 @@ if (isset($_SESSION["username"])) {
                 <img src="images/wlogo.png" alt="My Wakili">
             </a>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Lawyers</a>
+                <li><a href="pract-dashboard.php">Profile</a></li>
+                <!-- <li><a href="#">Lawyers</a>
                     <ul>
                         <li><a href="#">Criminal Law</a></li>
                         <li><a href="#">Civil Law</a></li>
@@ -38,11 +38,14 @@ if (isset($_SESSION["username"])) {
                         <li><a href="#">Mediation</a></li>
                         <li><a href="#">Other</a></li>
                     </ul>
-                </li>
+                </li> -->
                 
                 <li><a href="pract-appointments.php">Appointments</a></li>
-                <li><a href="#">Client Requests</a></li>
-                <li><a href="#">Schedule</a></li>
+                <li><a href="documents.php">Downloads</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
+
+                <!-- <li><a href="#">Client Requests</a></li> -->
+                <!-- <li><a href="#">Schedule</a></li> -->
             </ul>
         </nav>
 

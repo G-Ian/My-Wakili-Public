@@ -20,7 +20,7 @@ if (isset($_SESSION["username"])) {
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <ul class="menu">
-            <li><a href="client-profiles.php">Home</a></li>
+            <!-- <li><a href="client-profiles.php">Home</a></li> -->
             <li><a href="client-profiles.php">Lawyers</a>
                 <ul>
                     <li><a href="client-profiles.php?search=Criminal%20Law">Criminal Law</a></li>
@@ -43,7 +43,7 @@ if (isset($_SESSION["username"])) {
                     <li><a href="client-profiles.php?search=Other">Other</a></li>
                 </ul>
             </li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
         </ul>
 
         <!-- Begin: Added Username Display and Session Check -->
