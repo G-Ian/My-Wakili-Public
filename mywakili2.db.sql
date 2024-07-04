@@ -124,4 +124,14 @@ DELIMITER ;
 ALTER TABLE users ADD COLUMN is_admin TINYINT(1) DEFAULT 0;
 
 
+CREATE TABLE documents (
+    document_id INT AUTO_INCREMENT PRIMARY KEY,
+    document_name VARCHAR(255) NOT NULL,
+    document_type VARCHAR(100) NOT NULL,
+    document_size INT NOT NULL,
+    document_data LONGBLOB NOT NULL,
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 
