@@ -5,55 +5,62 @@ class Login extends Dbh {
     protected function getUser($username, $pwd) {
         $stmt = $this->connect()->prepare('SELECT user_pwd FROM users WHERE username = ? OR user_email = ?;');
 
-        if(!$stmt->execute(array($username, $pwd))){
+        if(!$stmt->execute(array($username, $username))){
             $stmt = null;
-            header ("location: ../login.php?error=stmtfailed");
+            header("location: ../login.php?error=stmtfailed");
             exit();
         }
 
-        if($stmt->rowCount() == 0) 
-        {
+        if($stmt->rowCount() == 0) {
             $stmt = null;
-            header ("location: ../login.php?error=usernotfound");
+            header("location: ../login.php?error=usernotfound");
             exit();
         }
 
-        $pwdHashed = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $checkPwd = password_verify($pwd, $pwdHashed[0]["user_pwd"]);
+        $pwdHashed = $stmt->fetch(PDO::FETCH_ASSOC);
+        $checkPwd = password_verify($pwd, $pwdHashed["user_pwd"]);
 
-        if($checkPwd == false) 
-        {
+        if($checkPwd == false) {
             $stmt = null;
-            header ("location: ../login.php?error=wrongpassword");
+            header("location: ../login.php?error=wrongpassword");
             exit();
         }
-        elseif($checkPwd == true) {
-            $stmt = $this->connect()->prepare('SELECT * FROM users WHERE username = ? OR user_email = ? AND user_pwd = ?;');
 
-            if(!$stmt->execute(array($username, $username, $pwd))){
-                $stmt = null;
-                header ("location: ../login.php?error=stmtfailed");
-                exit();
+        $stmt = $this->connect()->prepare('SELECT * FROM users WHERE (username = ? OR user_email = ?) AND user_pwd = ?;');
+
+        if(!$stmt->execute(array($username, $username, $pwdHashed["user_pwd"]))){
+            $stmt = null;
+            header("location: ../login.php?error=stmtfailed");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0) {
+            $stmt = null;
+            header("location: ../login.php?error=usernotfound");
+            exit();
+        }
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        session_start();
+        $_SESSION["user_id"] = $user["user_id"];
+        $_SESSION["username"] = $user["username"];
+        $_SESSION["user_type"] = $user["user_type"];
+        $_SESSION["is_admin"] = $user["is_admin"];
+
+        if ($user["is_admin"] == 1) {
+            header("location: ../admin-panel.php");
+        } else {
+            if ($user["user_type"] == 'client') {
+                header("location: ../client-dashboard.php");
+            } elseif ($user["user_type"] == 'practitioner') {
+                header("location: ../practitioner-dashboard.php");
+            } else {
+                header("location: ../profile.php");
             }
-
-            if($stmt->rowCount() == 0) 
-            {
-                $stmt = null;
-                header ("location: ../login.php?error=usernotfound");
-                exit();
-            }
-
-            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            session_start();
-            $_SESSION["user_id"] = $user[0]["user_id"];
-            $_SESSION["username"] = $user[0]["username"];
-            $_SESSION["user_type"] = $user[0]["user_type"];
-
-            $stmt = null;
         }
 
-
+        $stmt = null;
     }
-
 }
+?>
