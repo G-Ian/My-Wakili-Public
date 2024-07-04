@@ -32,7 +32,7 @@ if (isset($_SESSION["username"])) {
                 </ul>
             </li>
             <li><a href="client-appointments.php">Appointments</a></li>
-            <li><a href="#">Downloads</a></li>
+            <li><a href="documents.php">Downloads</a></li>
             <li><a href="#">Services</a>
                 <ul>
                     <li><a href="client-profiles.php?search=Court%20Process%20Server">Court Process Server</a></li>

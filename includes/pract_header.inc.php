@@ -54,7 +54,7 @@ if (isset($_SESSION["username"])) {
                 <button class="logout-button">Logout</button>
             </form>
         </div>
-        <!-- End: Added Username Display and Session Check -->
+        <!-- End -->
 
 
     </header>
