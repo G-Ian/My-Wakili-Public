@@ -34,7 +34,7 @@ $total_pages = ceil($total_appointments / $limit);
 <body>
 
     <!-- Header -->
-    <?php include 'includes/pract_header.inc.php'; ?>
+    <?php include 'includes/client_header.inc.php'; ?>
 
     <div class="container">
 
