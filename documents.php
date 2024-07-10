@@ -7,6 +7,8 @@ if (!isset($_SESSION["user_id"])) {
     exit();
 }
 
+
+
 require_once 'classes/dbh.classes.php';
 
 // Fetch documents from the database based on the search keyword
@@ -55,17 +57,13 @@ $documents = getDocuments($keyword);
 
 <div>
     <br><br>
-    <h1>FREE DOWNLOADS</h1>
     
-    <!-- Search Form -->
     <div class="search-container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" name="search" placeholder="Search documents by keyword">
             <button type="submit" class="">Search</button>
-        </form>
     </div>
 
-    <h2>Find a wide array of legal documents for free download</h2>
 
 
     <table border="1">
