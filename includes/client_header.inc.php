@@ -48,11 +48,12 @@ if (isset($_SESSION["username"])) {
 
         <!-- Begin: Added Username Display and Session Check -->
         <div class="logout">
-            <a href="#" class="username">Welcome, <?php echo htmlspecialchars($username); ?>!</a> <!-- Display the username as a link -->
+            <a href="pract-dashboard.php" class="username">Welcome, <?php echo htmlspecialchars($username); ?>!</a> <!-- Display the username as a link -->
             <form action="includes/logout.inc.php" method="post">
-                <button class="logout-button">Logout</button>
+                <button type="default">Logout</button>
             </form>
         </div>
+
         <!-- End: Added Username Display and Session Check -->
     </nav>
 </header>
