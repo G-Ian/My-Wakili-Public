@@ -30,15 +30,18 @@ $total_pages = ceil($total_appointments / $limit);
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/appointments.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 
     <!-- Header -->
-    <?php include 'includes/client_header.inc.php'; ?>
+    <?php include 'includes/pract_header.inc.php'; ?>
 
     <div class="container">
-
-        <h1>My Appointments</h1>
+        
+        <br>
+        <p class="small-text">My Appointments</p>
+        <br>
 
         <!-- Appointments Table -->
         <table>
