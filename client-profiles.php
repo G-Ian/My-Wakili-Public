@@ -14,7 +14,7 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Practitioners</title>
+    <title>Legal practitioners</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/client.css">
@@ -25,9 +25,9 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
     <?php include 'includes/client_header.inc.php'; ?>
 
 
-    <br>
+    <br><br>
     <div>
-    <p class="medium-text">Legal Practitioners</p>
+    <p class="medium-text">Lawyers & Legal Practitioners</p>
     <br>
 
         <!--search Bar -->
@@ -42,12 +42,14 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
         <?php if ($profiles): ?>
             <?php foreach ($profiles as $profile): ?>
                 <div class="profile-box">
+                    <!-- Initials generation -->
                     <?php 
                     $initials = strtoupper(substr($profile['full_name'], 0, 1)); 
                     if (strpos($profile['full_name'], ' ') !== false) {
                         $initials .= strtoupper(substr($profile['full_name'], strpos($profile['full_name'], ' ') + 1, 1));
                     }
                     ?>
+                    
                     <!-- Check if profile picture exists and is not empty -->
                     <?php if (isset($profile['profile_picture']) && !empty($profile['profile_picture'])): ?>
                         <a href="client-profile.php?practitioner_id=<?= $profile['practitioner_id'] ?>"><img src="<?= htmlspecialchars($profile['profile_picture'], ENT_QUOTES, 'UTF-8') ?>" alt="Profile Picture" class="profile-picture"></a>
@@ -86,6 +88,6 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
 
 
 
-    <!-- Add any necessary JavaScript here -->
+    <!-- Add JavaScript here -->
 </body>
 </html>
