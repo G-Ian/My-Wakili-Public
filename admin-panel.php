@@ -105,7 +105,7 @@ $documents = getDocuments();
 </head>
 <body>
 
-<?php include 'includes/pract_header.inc.php'; ?>
+<?php include 'includes/client_header.inc.php'; ?>
 
 <br>
 <h1>Admin Panel</h1>
