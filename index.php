@@ -9,31 +9,21 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Wakili</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
- 
-    <!-- <header>
-        <nav>
-            <ul>
-                <li><a href="#lawyers">Find a lawyer</a></li>
-                <li><a href="#documents">Quick Downloads</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#appointments">Appointments</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header> -->
-
-    
+    <?php include 'includes/footer.inc.php'; ?>
+     
     <br><br><br><br>
     <div class="mywakili">   
             <div class="medium-text">MY</div>
             <div class="large-text">WAKILI</div>
     </div>
+
+    <p class="small-text">For all your legal needs</p><br>
 
     <div class="instruction-text">
         <p class="instruction-text">LOG INTO YOUR ACCOUNT USING ONE OF THE BUTTONS BELOW</p>
@@ -41,10 +31,11 @@ session_start();
     <br>
 
     <div class="button-container">
-        <a href="login.php" class="find-lawyer-button">Find a Lawyer</a>
-        <a href="login.php" class="iam-lawyer-button">I am a Lawyer</a>
+        <a href="login.php" type="default">Find a Lawyer</a>
+        <a href="login.php" type="default">I am a Lawyer</a>
     </div>
     <br><br><br>
+
 
     <div class="instruction-text">
         <p class="instruction-text">Don't have an account?</p>
@@ -54,9 +45,7 @@ session_start();
 
    
 
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> Gallant Media. All rights reserved.</p>
-    </footer>
+
 
 </body>
 
