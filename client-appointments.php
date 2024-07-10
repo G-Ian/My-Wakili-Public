@@ -30,6 +30,7 @@ echo 'Memory usage: ' . memory_get_usage() . ' bytes';
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/appointments.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 
@@ -38,7 +39,9 @@ echo 'Memory usage: ' . memory_get_usage() . ' bytes';
 
     <div class="container">
 
-        <h1>My Appointments</h1>
+        <br>
+        <p class="medium-text">My Appointments</p>
+        <br>
 
         <!-- Appointments Table -->
         <table>
