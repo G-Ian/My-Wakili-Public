@@ -33,7 +33,7 @@ if (isset($_SESSION["username"])) {
             </li>
             <li><a href="client-appointments.php">Appointments</a></li>
             <li><a href="documents.php">Downloads</a></li>
-            <li><a href="#">Services</a>
+            <!-- <li><a href="client-profiles.php">Services</a>
                 <ul>
                     <li><a href="client-profiles.php?search=Court%20Process%20Server">Court Process Server</a></li>
                     <li><a href="client-profiles.php?search=Consultation">Consultation</a></li>
@@ -42,7 +42,7 @@ if (isset($_SESSION["username"])) {
                     <li><a href="client-profiles.php?search=Mediation">Mediation</a></li>
                     <li><a href="client-profiles.php?search=Other">Other</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li><a href="contact.php">Contact Us</a></li>
         </ul>
 
