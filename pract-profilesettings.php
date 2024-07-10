@@ -112,9 +112,9 @@ if ($profileData === null) {
                         <input type="checkbox" id="specialization10" name="law_specializations[]" value="Immigration Law">
                         <label for="specialization10">Immigration Law</label><br>
                         <input type="checkbox" id="specialization_other" name="law_specializations[]" value="other" onchange="handleOtherSpecialization()">
-                        <label for="specialization_other">Other</label>
+                        <!-- <label for="specialization_other">Other</label>
                         <input type="text" id="other_specialization" name="other_specialization" style="display: none;" placeholder="Enter your specialization">
-                        <!-- Add more checkboxes as needed -->
+                        Add more checkboxes as needed -->
                     </div>
             </fieldset>
         </div>
