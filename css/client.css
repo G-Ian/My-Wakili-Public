@@ -10,40 +10,6 @@ header h1 {
     margin-bottom: 20px;
 }
 
-header form {
-    margin-bottom: 20px;
-    text-align: center; 
-}
-
-header input[type="text"] {
-    padding: 10px;
-    width: 70%;
-    max-width: 400px;
-    margin-right: 10px;
-    border: 2px solid #ccc; 
-    border-radius: 15px; 
-    outline: none; 
-    box-sizing: border-box; 
-}
-
-header input[type="text"]:focus {
-    border-color: #000000; 
-    box-shadow: 0 0 8px rgb(0, 0, 0); 
-}
-
-header button[type="submit"] {
-    padding: 10px 20px;
-    border: 2px solid #ccc; 
-    border-radius: 15px; 
-    background-color: #000000; 
-    cursor: pointer; 
-    color: #fff;
-}
-
-header button[type="submit"]:hover {
-    background-color: #585858; 
-}
-
 main {
     padding: 20px;
     display: flex;
