@@ -43,15 +43,6 @@ CREATE TABLE profiles (
 );
 
 
-CREATE TABLE practitioner_specializations (
-    specialization_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    practitioner_id INT,
-    specialization VARCHAR(100) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (practitioner_id) REFERENCES practitioners(practitioner_id)
-);
-
 
 CREATE TABLE bookings (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
