@@ -18,20 +18,24 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/client.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
 </head>
 <body>
     <?php include 'includes/client_header.inc.php'; ?>
 
-    <header>
-        <br><br>
-        <h1>Legal Practitioners</h1>
+
+    <br>
+    <div>
+    <p class="medium-text">Legal Practitioners</p>
+    <br>
+
         <!--search Bar -->
         <form method="GET" action="">
             <input type="text" name="search" placeholder="Search by keyword..." value="<?= $searchQuery ?>">
-            <button type="submit">Search</button>
+            <button type="default">Search</button>
         </form>
-    </header>
+    </div>
     
     <main>
     <div class="profile-container">
