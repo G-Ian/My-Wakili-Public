@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <br><br>
 <div class="container">
-    <h1>Contact Us</h1>
+    <p class="small-text">Contact Us</p><br>
     <?php if (!empty($success_message)) : ?>
         <div class="alert alert-success" role="alert">
             <?php echo $success_message; ?>
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     <?php endif; ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text2" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         <button type="submit">Send Message</button>
