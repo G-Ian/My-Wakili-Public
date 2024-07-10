@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 
 session_start();
-if (!isset($_SESSION["user_id"])) {
+if (!isset($_SESSION["user_id"]) && !isset($_SESSION["user_type"])) {
     header("Location: /login.php");
     exit();
 }
@@ -53,17 +53,23 @@ $documents = getDocuments($keyword);
 
 <?php include 'includes/client_header.inc.php'; ?>
 
-<br>
 
 <div>
     <br><br>
+        <p class="medium-text">Free Downloads</p>
+        <br>
     
+    <!-- Search Form
     <div class="search-container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" name="search" placeholder="Search documents by keyword">
             <button type="submit" class="">Search</button>
+        </form> -->
     </div>
+    
+    
 
+    <p class="small-text">Find a wide array of legal documents for free download</p>
 
 
     <table border="1">
