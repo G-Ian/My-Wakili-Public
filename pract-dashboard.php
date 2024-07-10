@@ -31,6 +31,7 @@ $profileInfo = new ProfileInfoView();
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
     <link rel="stylesheet" type="text/css" href="css/dash.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
 
