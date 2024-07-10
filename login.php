@@ -19,25 +19,7 @@ require_once 'includes/login_view.inc.php';
    
 </head>
 <body>
-
-    <!-- <header>
-        <nav>
-            <ul>
-                <li><a href="#lawyers">Find a lawyer</a></li>
-                <li><a href="#documents">Quick Downloads</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#appointments">Appointments</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-        </nav>
-        
-    </header> -->
-
-
-   
-
-
+    
     <section class="login-signup">
         <div >
             <form action="includes/login.inc.php" method="post" class="login-signup-form">
