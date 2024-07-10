@@ -133,7 +133,8 @@ button[type="default"]:hover {
 
 form {
     margin-bottom: 20px;
-    text-align: center; 
+    text-align: center;
+    border: 1px; 
 }
 
 input[type="text"] {
