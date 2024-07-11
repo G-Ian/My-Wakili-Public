@@ -15,7 +15,7 @@ session_start();
 </head>
 
 <body>
-    <?php include 'includes/footer.inc.php'; ?>
+
      
     <br><br><br><br>
     <div class="mywakili">   
@@ -45,7 +45,7 @@ session_start();
 
    
 
-
+    <?php include 'includes/footer.inc.php'; ?>
 
 </body>
 
