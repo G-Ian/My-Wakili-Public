@@ -70,9 +70,9 @@ require_once 'includes/signup_view.inc.php';
     </section>
     
 
-    <footer>
-        <p>&copy; <?php echo date ("Y"); ?> Gallant Media. All rights reserved.</p>
-    </footer>
+
+    <?php include 'includes/footer.inc.php'; ?>
+
 
 </body>
 </html>
