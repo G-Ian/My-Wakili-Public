@@ -11,6 +11,14 @@ class ProfileInfoView extends ProfileInfo {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
+
+    public function fetchDocumentsByKeyword($keyword) {
+        $stmt = $this->connect()->prepare("SELECT * FROM documents WHERE document_name LIKE ? OR document_type LIKE ? OR document_data LIKE ?");
+        $search = "%$keyword%";
+        $stmt->execute([$search, $search, $search]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
     
     public function fetchAllProfiles() {
         return $this->getAllProfiles();
