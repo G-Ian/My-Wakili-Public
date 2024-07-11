@@ -1,4 +1,15 @@
 <?php
+session_start();
+// Include the database connection class
+require_once 'classes/dbh.classes.php';
+
+// Check if user_id is set in the session
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    die("User ID not found."); // Handle this error more gracefully in your application
+}
+
 // Function to build the calendar for a given month and year
 function build_calendar($month, $year, $user_id, $practitioner_id) {
     // Array of days of the week
@@ -29,13 +40,17 @@ function build_calendar($month, $year, $user_id, $practitioner_id) {
     $next_year = date('Y', mktime(0, 0, 0, $month+1, 1, $year));
 
     // Start building the HTML for the calendar
-    $calendar = "<h2>$monthName $year</h2><br>";
+    // $calendar = "<h2>$monthName $year</h2><br>";
+    // Display the calendar for the given month and year
+    $monthName = $dateComponents['month']; // Fetches the month name
+    $calendar = "<h2 class='small-text'>$monthName $year</h2><br>";
+
     
     // Navigation buttons for previous month, current month, and next month
-    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."&practitioner_id=$practitioner_id'>Prev Month</a> ";
-    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."&practitioner_id=$practitioner_id'>Current Month</a> ";
-    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."&practitioner_id=$practitioner_id'>Next Month</a>";
-
+    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$prev_month."&year=".$prev_year."&practitioner_id=$practitioner_id'><button type='default'>Prev Month</button></a> ";
+    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".date('m')."&year=".date('Y')."&practitioner_id=$practitioner_id'><button type='default'>Current Month</button></a> ";
+    $calendar .= "<a class='btn btn-primary btn-xs' href='?month=".$next_month."&year=".$next_year."&practitioner_id=$practitioner_id'><button type='default'>Next Month</button></a>";
+    
     // Add some space and start the table for the calendar
     $calendar .= "<br><br><table class='table table-bordered'><tr>";
 
@@ -77,9 +92,6 @@ function build_calendar($month, $year, $user_id, $practitioner_id) {
         // Check if the current day is today
         $today = $date == date('Y-m-d') ? 'today' : '';
 
-        // Determine practitioner_id based on user_id
-        $practitioner_id = get_practitioner_id($user_id);
-        
         // Create the cell for the current day with a clickable link
         $calendar .= "<td class='$today'><h3><a href='book-appointment.php?date=$date&practitioner_id=$practitioner_id'>$currentDayRel</a></h3></td>";
 
@@ -102,13 +114,18 @@ function build_calendar($month, $year, $user_id, $practitioner_id) {
     return $calendar;
 }
 
-// Function to get practitioner_id based on user_id
-function get_practitioner_id($user_id) {
-    // Assuming you have a database connection, perform a query to fetch practitioner_id
-    // Example query: SELECT practitioner_id FROM practitioners WHERE user_id = $user_id
-    // Replace this with your actual query
-    // For demo purposes, I'm returning a static value
-    return $user_id;
+// Function to get practitioner's name based on practitioner_id
+function get_practitioner_name($practitioner_id) {
+    // Create an instance of the database connection class
+    $dbh = new Dbh();
+    $pdo = $dbh->getPdo();    
+
+    // SQL query to fetch practitioner's name
+    $sql = "SELECT full_name FROM practitioners WHERE practitioner_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$practitioner_id]);
+    $result = $stmt->fetch();
+    return $result['full_name'];
 }
 
 ?>
@@ -118,12 +135,15 @@ function get_practitioner_id($user_id) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/calendar.css">
+    <link rel="stylesheet" type="text/css" href="css/header.footer.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Calendar</title>
 </head>
 <body>
+<?php include 'includes/client_header.inc.php'; ?><br>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -132,9 +152,16 @@ function get_practitioner_id($user_id) {
                     if (!isset($_GET['practitioner_id'])) {
                         die("No user selected.");
                     }
-                    $user_id = intval($_GET['practitioner_id']);
-                    $practitioner_id = $_GET['practitioner_id'];
+                    $practitioner_id = intval($_GET['practitioner_id']);
                     
+                    // Get practitioner's name
+                    $practitioner_name = get_practitioner_name($practitioner_id);
+                    
+                    // Display the practitioner's name
+                    echo "<h3 class='small-text'>You are booking an appointment with $practitioner_name</h3><br>";
+
+                    echo "<p class='instruction-text'>Click on one of the dates to make an appointment</p><br>";
+
                     // Get current month and year
                     $dateComponents = getdate();
                     
@@ -147,11 +174,17 @@ function get_practitioner_id($user_id) {
                         $year = $dateComponents['year'];
                     }
 
+                    // // Display the calendar heading with formatted text
+                    // $monthName = date('F', mktime(0, 0, 0, $month, 1, $year));
+                    // echo "<h2 class='calendar-heading'>$monthName $year</h2>";
+
                     // Display the calendar for the given month and year
                     echo build_calendar($month, $year, $user_id, $practitioner_id);
                 ?>
             </div>
         </div>
     </div>
+
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
 </html>
