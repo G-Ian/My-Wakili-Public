@@ -94,5 +94,7 @@ $total_pages = ceil($total_appointments / $limit);
 
     </div> <!-- End of .container -->
 
+
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
 </html>
