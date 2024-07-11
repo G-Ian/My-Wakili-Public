@@ -97,6 +97,8 @@ echo 'Memory usage: ' . memory_get_usage() . ' bytes';
 
     </div> <!-- End of .container -->
 
+    <?php include 'includes/footer.inc.php'; ?>
+
 </body>
 
 
