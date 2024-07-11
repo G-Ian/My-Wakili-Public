@@ -173,5 +173,7 @@ $practitioner_id = isset($_GET['practitioner_id']) ? $_GET['practitioner_id'] : 
         </div>
     </div>
 
+
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
 </html>
