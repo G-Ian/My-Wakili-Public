@@ -97,5 +97,8 @@ try {
 
     </div> <!-- End of .container -->
 
+
+    <?php include 'includes/footer.inc.php'; ?>
+
 </body>
 </html>
