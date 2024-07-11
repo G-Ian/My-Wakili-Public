@@ -86,7 +86,7 @@ $profiles = $profileView->fetchProfilesByKeyword($searchQuery);
 
 
 
-
+    <?php include 'includes/footer.inc.php'; ?>
 
     <!-- Add JavaScript here -->
 </body>
