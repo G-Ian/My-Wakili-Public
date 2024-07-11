@@ -51,9 +51,9 @@ require_once 'includes/login_view.inc.php';
     </div>
     
 
-    <footer>
-        <p>&copy; <?php echo date ("Y"); ?> Gallant Media. All rights reserved.</p>
-    </footer>
+
+    <?php include 'includes/footer.inc.php'; ?>
+
 
 </body>
 </html>
