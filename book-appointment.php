@@ -235,8 +235,9 @@ function calculateNextAvailableTime($practitioner_id, $date, $time) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/header.footer.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/booking.css">
     <title>Book Appointment</title>
 </head>
 <body>
@@ -261,37 +262,40 @@ function calculateNextAvailableTime($practitioner_id, $date, $time) {
                 <?php endif; ?>
 
                 <!-- Display booking form if no success message -->
-                <h2>Book an Appointment for <?php echo htmlspecialchars($date); ?></h2>
+                 <br>
+                <p class="small-text">Book an Appointment on <?php echo htmlspecialchars($date); ?></p><br>
                 <form method="POST" action="book-appointment.php?practitioner_id=<?php echo htmlspecialchars($practitioner_id); ?>&date=<?php echo htmlspecialchars($date); ?>">
                     <input type="hidden" name="date" value="<?php echo htmlspecialchars($date); ?>">
                     <div class="form-group">
                         <label for="time">Time</label>
                         <input type="time" class="form-control" id="time" name="time" required>
-                    </div>
+                    </div><br><br>
                     <div class="form-group">
                         <label for="client_name">Client Name</label>
                         <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Enter your full name" required>
-                    </div>
+                    </div><br><br>
                     <div class="form-group">
                         <label for="client_email">Client Email</label>
                         <input type="email" class="form-control" id="client_email" name="client_email" placeholder="Enter your email address" required>
-                    </div>
+                    </div><br><br>
                     <div class="form-group">
                         <label for="client_phone">Client Phone</label>
                         <input type="text" class="form-control" id="client_phone" name="client_phone" placeholder="Enter your phone number" required>
-                    </div>
+                    </div><br><br>
                     <div class="form-group">
                         <label for="service_type">Service Type</label>
                         <input type="text" class="form-control" id="service_type" name="service_type" placeholder="What type of service will you require? e.g Litigation, Court Process Server, Mediation, Commissioning of Oaths .etc" required>
-                    </div>
+                    </div><br><br>
                     <div class="form-group">
                         <label for="comments">Comments</label>
-                        <textarea class="form-control" id="comments" name="comments" rows="3" placeholder="Give some additional information about your case or the service you need (Optional)"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Book Appointment</button>
+                        <textarea input type="text" class="form-control" id="comments" name="comments" rows="3" placeholder="Give some additional information about your case or the service you need (Optional)"></textarea>
+                    </div><br><br>
+                    <button type="default">Book Appointment</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
 </html>
