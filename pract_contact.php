@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;
-        $mail->Username = 'mywakili.co.ke@gmail.com'; // SMTP username
-        $mail->Password = 'lpvaatlcfirrghjn'; // SMTP password
+        $mail->Username = ''; // SMTP username
+        $mail->Password = ''; // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587; // TCP port to connect to
 
         //Recipients
         $mail->setFrom($email, $name);
-        $mail->addAddress('mywakili.co.ke@gmail.com'); // Add a recipient
+        $mail->addAddress(''); // Add a recipient
 
         // Content
         $mail->isHTML(true); // Set email format to HTML
